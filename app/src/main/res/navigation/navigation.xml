@@ -18,19 +18,47 @@
         android:name="org.ohmstheresistance.essentialfacts.fragments.TriviaFragment">
         <action
             android:id="@+id/action_triviaFragment_to_congratulationsFragment"
-            app:destination="@id/congratulationsFragment" />
+            app:destination="@id/congratulationsFragment"
+            app:popUpTo="@+id/triviaFragment"
+            app:popUpToInclusive="true" />
+
         <action
             android:id="@+id/action_triviaFragment_to_keepPracticingFragment"
-            app:destination="@id/keepPracticingFragment" />
+            app:destination="@id/keepPracticingFragment"
+            app:popUpTo="@+id/triviaFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/congratulationsFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.CongratulationsFragment"
         android:label="congratulations_fragment"
-        tools:layout="@layout/congratulations_fragment" />
+        tools:layout="@layout/congratulations_fragment" >
+        <action
+            android:id="@+id/action_congratulationsFragment_to_triviaFragment"
+            app:destination="@id/triviaFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="numCorrect"
+            app:argType="integer" />
+        <argument
+            android:name="numQuestions"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/keepPracticingFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.KeepPracticingFragment"
         android:label="keep_practicing_fragment"
-        tools:layout="@layout/keep_practicing_fragment" />
+        tools:layout="@layout/keep_practicing_fragment" >
+        <action
+            android:id="@+id/action_keepPracticingFragment_to_triviaFragment"
+            app:destination="@id/triviaFragment"
+            app:popUpToInclusive="false" />
+
+        <argument
+            android:name="numCorrect"
+            app:argType="integer" />
+        <argument
+            android:name="numQuestions"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -75,11 +75,11 @@ class TriviaFragment : Fragment() {
                         binding.invalidateAll()
                     } else {
 
-                        view.findNavController().navigate(R.id.action_triviaFragment_to_congratulationsFragment)
+                        view.findNavController().navigate(TriviaFragmentDirections.actionTriviaFragmentToCongratulationsFragment(questionIndex, numQuestions))
                     }
                 } else {
 
-                    view.findNavController().navigate(R.id.action_triviaFragment_to_keepPracticingFragment)
+                    view.findNavController().navigate(TriviaFragmentDirections.actionTriviaFragmentToKeepPracticingFragment(questionIndex, numQuestions))
                 }
 
                 binding.questionRadioGroup.clearCheck()
