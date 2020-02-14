@@ -1,7 +1,8 @@
-package org.ohmstheresistance.essentialfacts
+package org.ohmstheresistance.essentialfacts.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import org.ohmstheresistance.essentialfacts.R
 
 class MainActivity : AppCompatActivity() {
 
