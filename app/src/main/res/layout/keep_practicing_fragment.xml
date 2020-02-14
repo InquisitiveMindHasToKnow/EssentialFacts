@@ -7,8 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameOverConstraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/holo_red_light">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/keep_practicing_textview"
@@ -17,6 +16,7 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:text="Keep Practicing!"
+            android:textColor="@color/textColor"
             android:gravity="center_horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/ladyliberty" />
+            app:srcCompat="@drawable/bald_eagle" />
 
         <TextView
             android:id="@+id/game_over_text_textview"
@@ -47,6 +47,7 @@
             android:text="@string/not_all_answers_correct"
             android:gravity="center"
             android:textSize="24sp"
+            android:textColor="@color/textColor"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:layout_marginEnd="@dimen/horizontal_margin"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,9 @@
             android:paddingStart="@dimen/button_padding"
             android:paddingEnd="@dimen/button_padding"
             android:text="Try Again"
-            android:textColor="?colorAccent"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/button_text_color"
+            android:textAllCaps="false"
             android:textSize="@dimen/button_text_size"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
