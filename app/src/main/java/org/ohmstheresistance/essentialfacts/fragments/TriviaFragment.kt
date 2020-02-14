@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.databinding.TriviaFragmentBinding
@@ -101,6 +102,11 @@ class TriviaFragment : Fragment() {
 
         binding.trivia = this
         binding.questionRadioGroup.clearCheck()
+
+        Glide.with(this)
+            .asGif()
+            .load(R.drawable.us_flag)
+            .into(binding.questionImage)
 
         binding.submitButton.setOnClickListener @Suppress("UNUSED_ANONYMOUS_PARAMETER")
         { view: View ->
