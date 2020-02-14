@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.CongratulationsFragment">
+    tools:context="fragments.GameWonFragment">
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gameWonConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_bright">
+
+        <TextView
+            android:id="@+id/congratulations_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:text="Congratulations!"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/youWinImage"
+            android:layout_marginTop="8dp"/>
+
+        <ImageView
+            android:id="@+id/youWinImage"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/game_over_height"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/vertical_margin"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/nextMatchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/constitution" />
+
+        <TextView
+            android:id="@+id/winner_text_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/all_answers_correct"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/nextMatchButton"
+            app:layout_constraintTop_toBottomOf="@id/youWinImage"/>
+
+        <Button
+            android:id="@+id/nextMatchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/button_padding"
+            android:paddingEnd="@dimen/button_padding"
+            android:text="Next Match"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/winner_text_textview" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

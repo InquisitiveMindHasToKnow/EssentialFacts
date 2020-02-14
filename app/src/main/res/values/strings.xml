@@ -2,5 +2,7 @@
     <string name="app_name">Essential Facts</string>
 
     <string name="trivia_questions_title">Essential Facts Question (%1$d/%2$d)</string>
+    <string name="all_answers_correct">You answered %1$d/%2$d questions correctly!</string>
+    <string name="not_all_answers_correct">You only answered %1$d/%2$d questions correctly.</string>
 
 </resources>
