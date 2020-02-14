@@ -34,13 +34,61 @@ class TriviaFragment : Fragment() {
         EssentialFactsTrivia(
             question = "How many states are there?",
             answers = listOf("50", "35", "40", "45")
+        ),
+        EssentialFactsTrivia(
+            question = "A U.S. Senator is elected once every:",
+            answers = listOf("Six years", "Two years", "Four years", "Ten years")
+        ),
+        EssentialFactsTrivia(
+            question = "Under the Constitution, which of these powers does NOT belong to the federal government?",
+            answers = listOf("Ratify amendments to the Constitution", "Declare war", "Print money", "Make treaties")
+        ),
+        EssentialFactsTrivia(
+            question = "Which of these is something Benjamin Franklin is known for?",
+            answers = listOf("He was the nation's first postmaster general", "He was the nation's second president", "He discovered electicity", "He was the first to sign the Constitution")
+        ),
+        EssentialFactsTrivia(
+            question = "How many amendments does the Constitution have?",
+            answers = listOf("27", "16", "25", "34")
+        ),
+        EssentialFactsTrivia(
+            question = "The House of Representatives have ____ voting members:",
+            answers = listOf("435", "395", "525", "100")
+        ),
+        EssentialFactsTrivia(
+            question = "The U.S. Senate has ___ voting members:",
+            answers = listOf("100", "50", "75", "25")
+        ),
+        EssentialFactsTrivia(
+            question = "The Federalist Papers supported the passage of the U.S. Constitution. Which of these men was not one of the authors?",
+            answers = listOf("John Adams", "James Madison", "John Jay", "Alexander Hamilton")
+        ),
+        EssentialFactsTrivia(
+            question = "When was the Constitution written?",
+            answers = listOf("1787", "1772", "1492", "1812")
+        ),
+        EssentialFactsTrivia(
+            question = "Who is in charge of the federal government?",
+            answers = listOf("the President", "the Speaker of the House", "the Senate Majority Leader", "The Chief Justice of the SCOTUS")
+        ),
+        EssentialFactsTrivia(
+            question = "What are the two parts of the Congress?",
+            answers = listOf("The House of Representatives and the Senate", "The Supreme Court and Washington D.C.", "The FBI and the ATF", "None of these answers")
+        ),
+        EssentialFactsTrivia(
+            question = "What do we call the first ten amendments of the Constitution?",
+            answers = listOf("The Bill of Rights", "Freedom of Expression", "The Declaration of Independence", "The Rule of Law")
+        ),
+        EssentialFactsTrivia(
+            question = "The idea of self-government is in the first three words of the Constitution.  What are these words?",
+            answers = listOf("We The People", "We Are One", "E Pluribus Unum", "Freedom of Religion")
         )
     )
 
     lateinit var currentQuestion: EssentialFactsTrivia
     lateinit var answers: MutableList<String>
     private var questionIndex = 0
-    private val numQuestions = min((triviaQuestions.size + 1) / 2, 2)
+    private val numQuestions = min((triviaQuestions.size + 1) / 2, 10)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
