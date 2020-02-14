@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation.xml"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.MainPageFragment"
+        android:label="MainPageFragment" >
+        <action
+            android:id="@+id/action_mainPageFragment_to_triviaFragment"
+            app:destination="@id/triviaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.TriviaFragment">
+        <action
+            android:id="@+id/action_triviaFragment_to_congratulationsFragment"
+            app:destination="@id/congratulationsFragment" />
+        <action
+            android:id="@+id/action_triviaFragment_to_keepPracticingFragment"
+            app:destination="@id/keepPracticingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/congratulationsFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.CongratulationsFragment"
+        android:label="congratulations_fragment"
+        tools:layout="@layout/congratulations_fragment" />
+    <fragment
+        android:id="@+id/keepPracticingFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.KeepPracticingFragment"
+        android:label="keep_practicing_fragment"
+        tools:layout="@layout/keep_practicing_fragment" />
+</navigation>
