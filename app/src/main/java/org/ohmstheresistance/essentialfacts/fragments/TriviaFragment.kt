@@ -46,7 +46,7 @@ class TriviaFragment : Fragment() {
         ),
         EssentialFactsTrivia(
             question = "Which of these is something Benjamin Franklin is known for?",
-            answers = listOf("He was the nation's first postmaster general", "He was the nation's second president", "He discovered electicity", "He was the first to sign the Constitution")
+            answers = listOf("He was the nation's first postmaster general", "He was the nation's second president", "He discovered electricity", "He was the first to sign the Constitution")
         ),
         EssentialFactsTrivia(
             question = "How many amendments does the Constitution have?",
@@ -226,7 +226,7 @@ class TriviaFragment : Fragment() {
         ),
         EssentialFactsTrivia(
             question = "Three of the original 13 states are ____, ____ and ____",
-            answers = listOf("New York, Connecticut and Pennsylvania", "South Dakota, Arizona, Maine ", "Florida, Texas, California", "New MExico, Kansas, Montana")
+            answers = listOf("New York, Connecticut and Pennsylvania", "South Dakota, Arizona, Maine ", "Florida, Texas, California", "New Mexico, Kansas, Montana")
         ),
         EssentialFactsTrivia(
             question = "What happened at the Constitutional Convention?",

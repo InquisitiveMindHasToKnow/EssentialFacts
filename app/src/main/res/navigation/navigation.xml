@@ -36,6 +36,7 @@
         <action
             android:id="@+id/action_congratulationsFragment_to_triviaFragment"
             app:destination="@id/triviaFragment"
+            app:popUpTo="@+id/mainPageFragment"
             app:popUpToInclusive="false" />
         <argument
             android:name="numCorrect"
@@ -52,6 +53,7 @@
         <action
             android:id="@+id/action_keepPracticingFragment_to_triviaFragment"
             app:destination="@id/triviaFragment"
+            app:popUpTo="@+id/mainPageFragment"
             app:popUpToInclusive="false" />
 
         <argument
