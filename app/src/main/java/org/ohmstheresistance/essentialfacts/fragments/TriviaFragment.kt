@@ -236,7 +236,6 @@ class TriviaFragment : Fragment() {
             question = "Who was the first President?",
             answers = listOf("George Washington", "John F. Kennedy", "George Bush", "Jimmy Carter")
         ),
-
         EssentialFactsTrivia(
             question = "Who is the 'Father of Our Country'?",
             answers = listOf("George Washington", "James Madison", "King Henry VIII", "Andrew Jackson")
@@ -264,7 +263,88 @@ class TriviaFragment : Fragment() {
         EssentialFactsTrivia(
             question = "What did Susan B. Anthony do?",
             answers = listOf("fought for civil/women's rights", "made electricity readily available", "ran the underground railroad", "created the stop light")
+        ),
+        EssentialFactsTrivia(
+            question = "Who did the U.S. fight in World War II?",
+            answers = listOf("Japan, Germany, Italy", "Great Britain, France, Iraq", "Canada, China, Mexico", "Russia, Nigeria, Vietnam")
+        ),
+        EssentialFactsTrivia(
+            question = "What movement tried to end racial discrimination?",
+            answers = listOf("Civil Rights", "Resistance", "Gender Equality", "Pro-life movement")
+        ),
+        EssentialFactsTrivia(
+            question = "Before he was President, Eisenhower was a general.  What war was he in?",
+            answers = listOf("World War II", "Vietnam", "Iraq", "World War I")
+        ),
+        EssentialFactsTrivia(
+            question = "Who was President during World War I?",
+            answers = listOf("Woodrow Wilson", "Franklyn Roosevelt", "Richard Nixon", "George Washington")
+        ),
+        EssentialFactsTrivia(
+            question = "Who was President during the Great Depression and World War II?",
+            answers = listOf("Franklin Roosevelt", "John F. Kennedy", "Harry S. Truman", "Lyndon B. Johnson")
+        ),
+        EssentialFactsTrivia(
+            question = "What did Martin Luther King, Jr. fight for?",
+            answers = listOf("Civil Rights and Equality", "Segregating people", "Houses and property in all 50 states", "Nothing")
+        ),
+        EssentialFactsTrivia(
+            question = "Name one American Indian tribe in the United States",
+            answers = listOf("All of these", "Pueblo", "Cherokee", "Navajo")
+        ),
+        EssentialFactsTrivia(
+            question = "The two longest rivers in the United States are the _____ and the _____",
+            answers = listOf("Mississippi and Missouri", "Rio Grande and Atlantic", "Pacific and Rio Verde", "Yosemite and Shawnee")
+        ),
+        EssentialFactsTrivia(
+            question = "What ocean is on the West Coast of the United States",
+            answers = listOf("Pacific", "Indian", "Atlantic", "Indian")
+        ),
+        EssentialFactsTrivia(
+            question = "What ocean is on the East Coast of the United States",
+            answers = listOf("Atlantic", "Arctic", "Pacific", "Indian")
+        ),
+        EssentialFactsTrivia(
+            question = "Name one state that borders Canada",
+            answers = listOf("Maine", "Georgia", "Texas", "Delaware")
+        ),
+        EssentialFactsTrivia(
+            question = "Name one state that borders Mexico",
+            answers = listOf("California", "Pennsylvania", "Montana", "Alaska")
+        ),
+        EssentialFactsTrivia(
+            question = "What is the capital of the United States?",
+            answers = listOf("Washington D.C.", "New York", "California", "Minnesota")
+        ),
+        EssentialFactsTrivia(
+            question = "Where is the Statue of Liberty located?",
+            answers = listOf("New York", "New Hampshire", "Maryland", "Nevada")
+        ),
+        EssentialFactsTrivia(
+            question = "There are 13 stripes on the flag because",
+            answers = listOf("There were 13 origin colonies ", "The flag could only fit 13 stripes", "There were 13 past Presidents when the flag was made", "There are 13 major highways in the country")
+        ),
+        EssentialFactsTrivia(
+            question = "Why does the flag have 50 stars?",
+            answers = listOf("Because there is a star for each state ", "Because there are 50 rivers in the country", "Because 50 is a magic number", "Because the 50 stars complement the 13 stripes perfectly")
+        ),
+        EssentialFactsTrivia(
+            question = "What is the name oof the national anthem?",
+            answers = listOf("The Star-Spangled Banner", "Oh Say Can You See", "America, The Beautiful", "Lift Every Voice")
+        ),
+        EssentialFactsTrivia(
+            question = "When do we celebrate Independence Day?",
+            answers = listOf("July 4th", "June 4th", "August 4th", "September 4th")
+        ),
+        EssentialFactsTrivia(
+            question = "Which of these is NOT a national U.S. holiday?",
+            answers = listOf("Rosh Hashanah", "Labor Day", "Thanksgiving", "Martin Luther King, Jr. Day")
+        ),
+        EssentialFactsTrivia(
+            question = "Name one war fought by the U.S. in the 1900s",
+            answers = listOf("All of these","World War I", "World War II", "Gulf War")
         )
+
     )
 
     lateinit var currentQuestion: EssentialFactsTrivia
