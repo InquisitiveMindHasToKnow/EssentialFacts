@@ -193,7 +193,7 @@ class TriviaFragment : Fragment() {
             answers = listOf("all of these", "give up loyalty to other countries", "obey the laws of the United States", "serve the nation(if needed)")
         ),
         EssentialFactsTrivia(
-            question = "What old do citizens have to be to vote?",
+            question = "How old do citizens have to be to vote?",
             answers = listOf("18", "21", "14", "30")
         ),
         EssentialFactsTrivia(
@@ -215,6 +215,55 @@ class TriviaFragment : Fragment() {
         EssentialFactsTrivia(
             question = "What group of people was taken to America and sold as slaves?",
             answers = listOf("Africans", "Spaniards", "Chinese", "Germans")
+        ),
+        EssentialFactsTrivia(
+            question = "Who wrote the Declaration of Independence?",
+            answers = listOf("Thomas Jeffereson", "James Madison", "Benjamin Franklin", "John Jay")
+        ),
+        EssentialFactsTrivia(
+            question = "When was the Declaration of Independence adpoted?",
+            answers = listOf("July 4, 1776", "July 4, 1900", "July 4, 1796", "July 4, 1812")
+        ),
+        EssentialFactsTrivia(
+            question = "Three of the original 13 states are ____, ____ and ____",
+            answers = listOf("New York, Connecticut and Pennsylvania", "South Dakota, Arizona, Maine ", "Florida, Texas, California", "New MExico, Kansas, Montana")
+        ),
+        EssentialFactsTrivia(
+            question = "What happened at the Constitutional Convention?",
+            answers = listOf("The Constitution was written", "The Constitution was ordered", "The Constitution was thought of", "There was no Constitution Convention")
+        ),
+        EssentialFactsTrivia(
+            question = "Who was the first President?",
+            answers = listOf("George Washington", "John F. Kennedy", "George Bush", "Jimmy Carter")
+        ),
+
+        EssentialFactsTrivia(
+            question = "Who is the 'Father of Our Country'?",
+            answers = listOf("George Washington", "James Madison", "King Henry VIII", "Andrew Jackson")
+        ),
+        EssentialFactsTrivia(
+            question = "What territory did the United States buy from France in 1803?",
+            answers = listOf("Louisiana", "North Dakota", "Maine", "Kentucky")
+        ),
+        EssentialFactsTrivia(
+            question = "Name one war fought by the United States in the 1800s?",
+            answers = listOf("War of 1812", "Iraq War", "World War II", "World War I")
+        ),
+        EssentialFactsTrivia(
+            question = "The U.S. war between the North and the South was?",
+            answers = listOf("the Civil War", "World War I", "the Spanish-American war ", "the Mexican-American war")
+        ),
+        EssentialFactsTrivia(
+            question = "All of these problems led to the Civil War except?",
+            answers = listOf("too much money", "slavery", "economic reasons", "states rights")
+        ),
+        EssentialFactsTrivia(
+            question = "What did the Emancipation Proclamation do?",
+            answers = listOf("freed the slaves", "made people slaves", "freed up money for people", "freed up land around the country")
+        ),
+        EssentialFactsTrivia(
+            question = "What did Susan B. Anthony do?",
+            answers = listOf("fought for civil/women's rights", "made electricity readily available", "ran the underground railroad", "created the stop light")
         )
     )
 
