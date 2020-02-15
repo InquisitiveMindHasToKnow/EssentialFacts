@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+    <item android:drawable="@android:color/transparent"
+        android:gravity="bottom"/>
+
+    <item
+        android:height="264dp"
+        android:width="400dp"
+        android:top="300dp">
+
+        <bitmap
+            android:src="@drawable/usa_map"/>
+    </item>
+</layer-list>

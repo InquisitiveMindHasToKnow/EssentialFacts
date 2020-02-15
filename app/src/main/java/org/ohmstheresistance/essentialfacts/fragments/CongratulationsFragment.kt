@@ -40,6 +40,4 @@ class CongratulationsFragment : Fragment() {
 
         return binding.root
     }
-
-
 }

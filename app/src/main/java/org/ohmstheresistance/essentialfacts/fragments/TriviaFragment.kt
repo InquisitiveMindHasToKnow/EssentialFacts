@@ -37,7 +37,7 @@ class TriviaFragment : Fragment() {
             answers = listOf("50", "35", "40", "45")
         ),
         EssentialFactsTrivia(
-            question = "A U.S. Senator is elected once every:",
+            question = "A U.S. Senator is elected for:",
             answers = listOf("Six years", "Two years", "Four years", "Ten years")
         ),
         EssentialFactsTrivia(
@@ -83,6 +83,138 @@ class TriviaFragment : Fragment() {
         EssentialFactsTrivia(
             question = "The idea of self-government is in the first three words of the Constitution.  What are these words?",
             answers = listOf("We The People", "We Are One", "E Pluribus Unum", "Freedom of Religion")
+        ),
+        EssentialFactsTrivia(
+            question = "What is the capital of New York?",
+            answers = listOf("Albany", "Kingston", "Yonkers", "Manhattan")
+        ),
+        EssentialFactsTrivia(
+            question = "If the President can no longer serve, who takes over?",
+            answers = listOf("The Vice President", "The Speaker of the House", "The top military generals", "The Senate Minority Leader")
+        ),
+        EssentialFactsTrivia(
+            question = "Who signs bills into laws?",
+            answers = listOf("the President", "the cabinet", "the Supreme Court", "the Vice President")
+        ),
+        EssentialFactsTrivia(
+            question = "Who vetoes bills?",
+            answers = listOf("the President", "the Chief Justice of the SCOTUS", "the House of Representatives", "the FBI director")
+        ),
+        EssentialFactsTrivia(
+            question = "What is the law of the land?",
+            answers = listOf("the Constitution", "the Bible", "the Torah", "None of these")
+        ),
+        EssentialFactsTrivia(
+            question = "The Constitution does each of these things except:",
+            answers = listOf("Appoints judges", "Sets up the government", "Defines the government", "Protects basic rights of Americans")
+        ),
+        EssentialFactsTrivia(
+            question = "What is one right or freedom from the First Amendment?",
+            answers = listOf("All of these", "Freedom of speech", "Freedom of assembly", "Freedom of religion")
+        ),
+        EssentialFactsTrivia(
+            question = "What country did the Declaration of Independence declare us independent from?",
+            answers = listOf("Great Britain", "France", "Canada", "Germany")
+        ),
+        EssentialFactsTrivia(
+            question = "What are two rights of the Declaration of Independence?",
+            answers = listOf("life and liberty", "wealth and freedom", "pursuit of happiness and vast wealth", "liberty and property")
+        ),
+        EssentialFactsTrivia(
+            question = "The three branches of government are?",
+            answers = listOf("legislative, judicial and executive", "the Cabinet, the Senate, House of Representatives", "the Courts, the FBI, the State", "We The People, the Courts, Lawyers")
+        ),
+        EssentialFactsTrivia(
+            question = "What stops one branch of government from becoming too powerful?",
+            answers = listOf("Checks and Balances/ Separation of Powers", "Daily protests", "the Law", "the Statue of Liberty")
+        ),
+        EssentialFactsTrivia(
+            question = "Who makes federal law?",
+            answers = listOf("The Congress", "The President", "state Governors", "City Mayors")
+        ),
+        EssentialFactsTrivia(
+            question = "Who do Senators represent?",
+            answers = listOf("Everyone in their state", "Major corporation", "The US Congress", "The President")
+        ),
+        EssentialFactsTrivia(
+            question = "Why do some states have more Representatives than others?",
+            answers = listOf("They have more people", "They have more money", "Bribery", "They asked for them")
+        ),
+        EssentialFactsTrivia(
+            question = "A President is elected for?",
+            answers = listOf("Four years", "Six years", "Two years", "Nine years")
+        ),
+        EssentialFactsTrivia(
+            question = "If the President and Vice President can no longer serve, who takes over?",
+            answers = listOf("The Speaker of the House", "The Senate Leader", "Secretary of Taking Over ", "Police Commissioner")
+        ),
+        EssentialFactsTrivia(
+            question = "The Commander in Chief of the military is?",
+            answers = listOf("the President", "the top military general", "the Congress", "Secretary of Defense")
+        ),
+        EssentialFactsTrivia(
+            question = "What are two cabinat level positions?",
+            answers = listOf("Secretary of State/ Secretary of Defense", "Secretary of Education/Secretary of the FBI", "Secretary of the CIA/Secretary of Agriculture", "Secretary of the Treasury/Secretary of Airports")
+        ),
+        EssentialFactsTrivia(
+            question = "The job of the Judicial Branch of government is to:",
+            answers = listOf("Review Laws", "Make Laws", "Sign Laws", "None of these")
+        ),
+        EssentialFactsTrivia(
+            question = "What is the highest court in the United States?",
+            answers = listOf("The Supreme Court of the US", "State Court", "Federal Court", "Traffic Court")
+        ),
+        EssentialFactsTrivia(
+            question = "Under our Constitution, some powers belong to the federal government.  What is one power of the federal government?",
+            answers = listOf("all of these", "to print money", "to declare war", "to create an army")
+        ),
+        EssentialFactsTrivia(
+            question = "Under our Constitution, some powers belong to the states.  What is one power of the states? ",
+            answers = listOf("all of these", "provide schooling and education", "provide protection (police)", "give a driver’s license")
+        ),
+        EssentialFactsTrivia(
+            question = "Who is the Governor of New York?",
+            answers = listOf("Andrew Cuomo", "Michael Bloomberg", "Charles Schumer", "Jerry Nadler")
+        ),
+        EssentialFactsTrivia(
+            question = "What is one responsibility of United States citizens?",
+            answers = listOf("Serve on a jury", "Travel frequently", "Become millionaires", "Nothing")
+        ),
+        EssentialFactsTrivia(
+            question = "What is one right of United States citizens?",
+            answers = listOf("Ability to run for federal office", "Make money", "Buy a car", "Make laws")
+        ),
+        EssentialFactsTrivia(
+            question = "When we say the Pledge of Allegiance we show loyalty to?",
+            answers = listOf("The United States", "Presidents", "The Government", "Nothing")
+        ),
+        EssentialFactsTrivia(
+            question = "What is one promise you make when you become a United States citizen?",
+            answers = listOf("all of these", "give up loyalty to other countries", "obey the laws of the United States", "serve the nation(if needed)")
+        ),
+        EssentialFactsTrivia(
+            question = "What old do citizens have to be to vote?",
+            answers = listOf("18", "21", "14", "30")
+        ),
+        EssentialFactsTrivia(
+            question = "What is a way for an American to participate in their democracy?",
+            answers = listOf("all of these", "vote", "run for office", "publicly support or oppose an issue or policy")
+        ),
+        EssentialFactsTrivia(
+            question = "When is the last day you can send in federal income tax forms?",
+            answers = listOf("April 15", "February 28", "March 12", "January 31")
+        ),
+        EssentialFactsTrivia(
+            question = "All men must register for the Selective Service at what age?",
+            answers = listOf("18", "21", "15", "13")
+        ),
+        EssentialFactsTrivia(
+            question = "Who lived in America before the Europeans arrived?",
+            answers = listOf("Native Americans", "Canadians", "French", "Middle Easterners")
+        ),
+        EssentialFactsTrivia(
+            question = "What group of people was taken to America and sold as slaves?",
+            answers = listOf("Africans", "Spaniards", "Chinese", "Germans")
         )
     )
 

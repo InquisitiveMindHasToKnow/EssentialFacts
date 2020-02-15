@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/congratulationsFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.CongratulationsFragment"
-        android:label="congratulations_fragment"
-        tools:layout="@layout/congratulations_fragment" >
+        android:label="     "
+        tools:layout="@layout/congratulations_fragment">
         <action
             android:id="@+id/action_congratulationsFragment_to_triviaFragment"
             app:destination="@id/triviaFragment"
@@ -47,8 +47,8 @@
     <fragment
         android:id="@+id/keepPracticingFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.KeepPracticingFragment"
-        android:label="keep_practicing_fragment"
-        tools:layout="@layout/keep_practicing_fragment" >
+        android:label="    "
+        tools:layout="@layout/keep_practicing_fragment">
         <action
             android:id="@+id/action_keepPracticingFragment_to_triviaFragment"
             app:destination="@id/triviaFragment"
