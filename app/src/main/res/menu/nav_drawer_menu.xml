@@ -3,10 +3,10 @@
 
     <item
         android:id="@+id/rulesFragment"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/rules"
         android:title="Rules" />
     <item
         android:id="@+id/aboutFragment"
-        android:icon="@drawable/lady_liberty"
+        android:icon="@drawable/about"
         android:title="About" />
 </menu>
