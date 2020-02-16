@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.MainPageFragment"
-        android:label="MainPageFragment" >
+        android:label="      ">
         <action
             android:id="@+id/action_mainPageFragment_to_triviaFragment"
             app:destination="@id/triviaFragment" />
