@@ -5,4 +5,8 @@
     <string name="all_answers_correct">You answered %1$d/%2$d questions correctly. Well done!</string>
     <string name="not_all_answers_correct">You only answered %1$d/%2$d questions correctly.</string>
 
+    <string name="about_text">Essential Facts aims to educate users on American History and current political facts and test their knowledge with a mini trivia from time to time. </string>
+    <string name="rules_text">Select the answer from the options given. Each time you get an answer correct, you advance to the next question.\n\nIf you get the answer wrong, your game ends! You can return to the title screen using up or back from within the game screen, and this will also end your game.</string>
+
+
 </resources>

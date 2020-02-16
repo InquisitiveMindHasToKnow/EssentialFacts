@@ -63,4 +63,12 @@
             android:name="numQuestions"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.AboutFragment"
+        android:label="About" />
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.RulesFragment"
+        android:label="Trivia Rules" />
 </navigation>
