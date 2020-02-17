@@ -8,7 +8,7 @@
     <item
         android:height="264dp"
         android:width="400dp"
-        android:top="300dp">
+        android:top="200dp">
 
         <bitmap
             android:src="@drawable/usa_map"/>
