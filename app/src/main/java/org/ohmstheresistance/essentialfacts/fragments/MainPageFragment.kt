@@ -24,9 +24,6 @@ class MainPageFragment : Fragment() {
 
         binding.playButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_mainPageFragment_to_triviaFragment))
 
-
-
-
         return binding.root
     }
 
