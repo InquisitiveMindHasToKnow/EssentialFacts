@@ -10,17 +10,16 @@ import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
 
 class EssentialFactsAdapter(val studyInfoList: ArrayList<EssentialFactsInfo>) : RecyclerView.Adapter<EssentialFactsAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): EssentialFactsAdapter.ViewHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.study_info_itemview, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.study_info_itemview, parent, false)
+
         return ViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: EssentialFactsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(studyInfoList[position])
+
+
     }
 
     override fun getItemCount(): Int {
