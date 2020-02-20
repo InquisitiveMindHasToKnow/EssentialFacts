@@ -62,6 +62,10 @@
         <argument
             android:name="numQuestions"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_keepPracticingFragment_to_studyFragment"
+            app:destination="@id/studyFragment"
+            app:popUpTo="@+id/mainPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -75,5 +79,11 @@
         android:id="@+id/studyFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.StudyFragment"
         android:label="Study"
-        tools:layout="@layout/study_fragment" />
+        tools:layout="@layout/study_fragment" >
+        <action
+            android:id="@+id/action_studyFragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment"
+            app:popUpTo="@+id/mainPageFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 </navigation>
