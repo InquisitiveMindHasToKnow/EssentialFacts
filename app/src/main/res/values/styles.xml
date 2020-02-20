@@ -6,10 +6,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/ruluko</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.navTheme">
         <item name="fontFamily">@font/ruluko</item>
         <item name="android:textSize">20sp</item>
     </style>
+
 </resources>
