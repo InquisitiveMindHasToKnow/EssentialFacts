@@ -11,6 +11,6 @@
         android:title="About" />
     <item
         android:id="@+id/studyFragment"
-        android:icon="@drawable/rules"
+        android:icon="@drawable/study"
         android:title="Study"/>
 </menu>
