@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.study_fragment.*
@@ -20,6 +19,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
+import kotlin.collections.ArrayList
 
 class StudyFragment : Fragment() {
 
@@ -58,6 +59,7 @@ class StudyFragment : Fragment() {
                     response.body()?.forEach { println("FACTS_: $it") }
 
                     response.body()?.let { studyGuideList.addAll(it) }
+                    studyGuideList.shuffle()
 
                     study_guide_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                     study_guide_recycler_view.adapter = essentialFactsAdapter
