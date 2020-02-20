@@ -33,7 +33,6 @@
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:paddingStart="@dimen/button_padding"
         android:paddingEnd="@dimen/button_padding"
-        android:fontFamily="@font/ruluko"
         android:text="Play"
         android:background="@drawable/rounded_button"
         android:textColor="@color/button_text_color"

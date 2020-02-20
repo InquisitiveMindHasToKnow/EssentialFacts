@@ -27,7 +27,6 @@
         android:id="@+id/extra_info_on_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/ruluko"
         android:gravity="center"
         android:text="Study up on American history and test your knowledge with the best trivia around!!"
         android:textColor="@android:color/white"
