@@ -37,6 +37,12 @@ class KeepPracticingFragment : Fragment() {
                 .navigate(KeepPracticingFragmentDirections.actionKeepPracticingFragmentToTriviaFragment())
         }
 
+        binding.studyFromKeepPracticingFragButton.setOnClickListener { view: View ->
+
+            view.findNavController()
+                .navigate(KeepPracticingFragmentDirections.actionKeepPracticingFragmentToStudyFragment())
+        }
+
         return binding.root
     }
 }

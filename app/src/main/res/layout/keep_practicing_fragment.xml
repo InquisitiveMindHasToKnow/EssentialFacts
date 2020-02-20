@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/keep_practicing_textview"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
             android:textStyle="bold"
@@ -33,10 +33,10 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             android:layout_marginBottom="8dp"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/tryAgainButton"
+            app:layout_constraintBottom_toTopOf="@+id/game_over_text_textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/keep_practicing_textview"
             app:layout_constraintVertical_chainStyle="packed"
             app:srcCompat="@drawable/bald_eagle" />
 
@@ -55,17 +55,42 @@
             android:layout_marginEnd="@dimen/horizontal_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tryAgainButton"
+            app:layout_constraintBottom_toTopOf="@id/keepPracticingButtonLinear"
             app:layout_constraintTop_toBottomOf="@id/keepPracticingFragment"/>
+
+        <LinearLayout
+            android:id="@+id/keepPracticingButtonLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_over_text_textview" >
+
+        <Button
+            android:id="@+id/studyFromKeepPracticingFragButton"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="@dimen/button_padding"
+            android:paddingEnd="@dimen/button_padding"
+            android:text="Study More?"
+            android:fontFamily="@font/ruluko"
+            android:background="@drawable/rounded_button"
+            android:textColor="@color/button_text_color"
+            android:textAllCaps="false"
+            android:textSize="@dimen/button_text_size"
+            android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/tryAgainButton"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/vertical_margin"
-            android:layout_marginTop="@dimen/vertical_margin"
-            android:layout_marginEnd="@dimen/vertical_margin"
             android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
             android:paddingStart="@dimen/button_padding"
             android:paddingEnd="@dimen/button_padding"
             android:text="Try Again"
@@ -74,10 +99,8 @@
             android:textColor="@color/button_text_color"
             android:textAllCaps="false"
             android:textSize="@dimen/button_text_size"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_over_text_textview" />
+            android:textStyle="bold" />
+
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

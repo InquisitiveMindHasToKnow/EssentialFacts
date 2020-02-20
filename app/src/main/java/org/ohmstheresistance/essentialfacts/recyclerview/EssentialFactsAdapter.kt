@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.study_info_itemview.view.*
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
 
-class EssentialFactsAdapter(val studyInfoList: ArrayList<EssentialFactsInfo>) : RecyclerView.Adapter<EssentialFactsAdapter.ViewHolder>() {
+class EssentialFactsAdapter(private val studyInfoList: ArrayList<EssentialFactsInfo>) : RecyclerView.Adapter<EssentialFactsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.study_info_itemview, parent, false)
