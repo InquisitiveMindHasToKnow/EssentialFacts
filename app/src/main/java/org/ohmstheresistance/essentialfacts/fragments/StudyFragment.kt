@@ -1,27 +1,32 @@
 package org.ohmstheresistance.essentialfacts.fragments
 
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.study_fragment.*
-
 import org.ohmstheresistance.essentialfacts.R
-import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfoService
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
+import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfoService
 import org.ohmstheresistance.essentialfacts.recyclerview.EssentialFactsAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.collections.ArrayList
 
 class StudyFragment : Fragment() {
+
+    lateinit var snackbar: Snackbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +39,7 @@ class StudyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getInfo()
+        checkInternetConnection()
 
     }
 
@@ -69,6 +74,42 @@ class StudyFragment : Fragment() {
             })
     }
 
+    private fun showSnackBar(view: View){
 
+        snackbar = Snackbar.make(view, "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
+        val snackbarView = snackbar.view
+
+        snackbarView.setBackgroundColor(resources.getColor(R.color.backGroundColor))
+        val textView =
+            snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+        textView.setTextColor(resources.getColor(R.color.colorPrimaryDark))
+        textView.textSize = 18f
+        snackbar.show()
+    }
+
+    private fun checkInternetConnection(): Boolean {
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            var activeNetworkInfo: NetworkInfo?
+            activeNetworkInfo = connectivityManager.activeNetworkInfo
+            return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
+        }
+
+        if (context?.let { isNetworkAvailable(it) }!!) {
+            getInfo()
+        } else {
+            view?.let { showSnackBar(it) }
+        }
+
+return true
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        snackbar.dismiss()
+    }
 }
 
