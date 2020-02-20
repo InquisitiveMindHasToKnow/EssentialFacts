@@ -74,6 +74,6 @@
     <fragment
         android:id="@+id/studyFragment"
         android:name="org.ohmstheresistance.essentialfacts.fragments.StudyFragment"
-        android:label="study_fragment"
+        android:label="Study"
         tools:layout="@layout/study_fragment" />
 </navigation>

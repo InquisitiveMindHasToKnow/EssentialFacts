@@ -6,10 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.study_fragment.*
 
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfoService
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
+import org.ohmstheresistance.essentialfacts.recyclerview.EssentialFactsAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +34,15 @@ class StudyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getInfo()
+
+    }
+
+    private fun getInfo() {
+
+        val studyGuideList = ArrayList<EssentialFactsInfo>()
+        val essentialFactsAdapter = EssentialFactsAdapter(studyGuideList)
+
         val service = Retrofit.Builder()
             .baseUrl("https://gist.githubusercontent.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -37,13 +51,23 @@ class StudyFragment : Fragment() {
 
         service.retrieveEssentialFactsInformation("InquisitiveMindHasToKnow")
             .enqueue(object : Callback<List<EssentialFactsInfo>> {
-                override fun onResponse(call: Call<List<EssentialFactsInfo>>, response: Response<List<EssentialFactsInfo>>) {
+                override fun onResponse(
+                    call: Call<List<EssentialFactsInfo>>,
+                    response: Response<List<EssentialFactsInfo>>
+                ) {
                     response.body()?.forEach { println("FACTS_: $it") }
+
+                    response.body()?.let { studyGuideList.addAll(it) }
+
+                    study_guide_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    study_guide_recycler_view.adapter = essentialFactsAdapter
                 }
 
-                override fun onFailure(call: Call<List<EssentialFactsInfo>>, t: Throwable) = t.printStackTrace()
+                override fun onFailure(call: Call<List<EssentialFactsInfo>>, t: Throwable) =
+                    t.printStackTrace()
             })
     }
-    }
 
+
+}
 
