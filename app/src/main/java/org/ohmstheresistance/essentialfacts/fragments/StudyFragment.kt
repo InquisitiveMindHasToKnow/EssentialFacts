@@ -9,12 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.study_fragment.*
+import kotlinx.android.synthetic.main.study_fragment.view.*
 import org.ohmstheresistance.essentialfacts.R
+import org.ohmstheresistance.essentialfacts.databinding.StudyFragmentBinding
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfoService
 import org.ohmstheresistance.essentialfacts.recyclerview.EssentialFactsAdapter
@@ -27,13 +28,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 class StudyFragment : Fragment() {
 
      private var snackbar: Snackbar? = null
+    val studyGuideList = ArrayList<EssentialFactsInfo>()
+    val essentialFactsAdapter = EssentialFactsAdapter(studyGuideList)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.study_fragment, container, false)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val binding = DataBindingUtil.inflate<StudyFragmentBinding>(inflater, R.layout.study_fragment, container, false)
+
+        binding.studyGuideRecyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL, false)
+        binding.studyGuideRecyclerView.adapter = essentialFactsAdapter
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,9 +49,6 @@ class StudyFragment : Fragment() {
     }
 
     private fun getInfo() {
-
-        val studyGuideList = ArrayList<EssentialFactsInfo>()
-        val essentialFactsAdapter = EssentialFactsAdapter(studyGuideList)
 
         val service = Retrofit.Builder()
             .baseUrl("https://gist.githubusercontent.com/")
@@ -65,10 +67,8 @@ class StudyFragment : Fragment() {
                     response.body()?.let { studyGuideList.addAll(it) }
                     studyGuideList.shuffle()
 
-                    study_guide_recycler_view.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                    study_guide_recycler_view.adapter = essentialFactsAdapter
+                        essentialFactsAdapter.notifyDataSetChanged()
                 }
-
                 override fun onFailure(call: Call<List<EssentialFactsInfo>>, t: Throwable) =
                     t.printStackTrace()
             })
