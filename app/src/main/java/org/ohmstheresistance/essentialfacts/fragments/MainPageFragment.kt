@@ -22,12 +22,10 @@ class MainPageFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<MainPageFragmentBinding>(inflater, R.layout.main_page_fragment, container, false)
 
-        binding.playButton.setOnClickListener (Navigation.createNavigateOnClickListener(R.id.action_mainPageFragment_to_triviaFragment))
+        binding.playButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_mainPageFragment_to_triviaFragment))
 
         return binding.root
     }
-
 }
-
 
 

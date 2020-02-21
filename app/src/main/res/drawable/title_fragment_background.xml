@@ -3,14 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:opacity="opaque">
     <item android:drawable="@android:color/transparent"
-        android:gravity="bottom"/>
+        android:gravity="center"/>
 
     <item
-        android:height="264dp"
-        android:width="400dp"
-        android:top="200dp">
+        android:height="240dp"
+        android:width="320dp"
+        android:gravity="center|bottom"
+        >
 
         <bitmap
             android:src="@drawable/usa_map"/>
+
+    </item>
+
+    <item
+        android:height="300dp"
+        android:width="120dp"
+        android:bottom="100dp"
+        android:gravity="center|top"
+        >
+
+        <bitmap
+            android:src="@drawable/lady_liberty"/>
+
     </item>
 </layer-list>
