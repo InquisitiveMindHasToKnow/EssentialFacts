@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class StudyFragment : Fragment() {
 
-    lateinit var snackbar: Snackbar
+     private var snackbar: Snackbar? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,14 +77,14 @@ class StudyFragment : Fragment() {
     private fun showSnackBar(view: View){
 
         snackbar = Snackbar.make(view, "No Internet Connection", Snackbar.LENGTH_INDEFINITE)
-        val snackbarView = snackbar.view
+        val snackbarView = snackbar!!.view
 
         snackbarView.setBackgroundColor(resources.getColor(R.color.backGroundColor))
         val textView =
             snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
         textView.setTextColor(resources.getColor(R.color.colorPrimaryDark))
         textView.textSize = 18f
-        snackbar.show()
+        snackbar!!.show()
     }
 
     private fun checkInternetConnection(): Boolean {
@@ -109,7 +109,7 @@ return true
     override fun onDestroy() {
         super.onDestroy()
 
-        snackbar.dismiss()
+        snackbar?.dismiss()
     }
 }
 
