@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class StudyFragment : Fragment() {
 
-     private var snackbar: Snackbar? = null
+    private var snackbar: Snackbar? = null
     val studyGuideList = ArrayList<EssentialFactsInfo>()
     val essentialFactsAdapter = EssentialFactsAdapter(studyGuideList)
 

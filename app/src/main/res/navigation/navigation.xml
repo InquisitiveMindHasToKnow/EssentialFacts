@@ -86,4 +86,8 @@
             app:popUpTo="@+id/mainPageFragment"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/studyWithAudioFragment"
+        android:name="org.ohmstheresistance.essentialfacts.fragments.StudyWithAudioFragment"
+        android:label="StudyWithAudioFragment" />
 </navigation>
