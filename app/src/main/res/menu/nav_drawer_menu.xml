@@ -13,4 +13,9 @@
         android:id="@+id/studyFragment"
         android:icon="@drawable/study"
         android:title="Study"/>
+
+    <item
+        android:id="@+id/studyWithAudioFragment"
+        android:icon="@drawable/study"
+        android:title="Audio"/>
 </menu>

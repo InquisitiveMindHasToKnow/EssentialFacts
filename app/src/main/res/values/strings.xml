@@ -10,5 +10,8 @@
 
     <string name="title_page_header_text"> <font color="#141330">E</font><font color="#BF0A30">s</font><font color="#141330">s</font><font color="#BF0A30">e</font><font color="#141330">n</font><font color="#BF0A30">t</font><font color="#141330">i</font><font color="#BF0A30">a</font><font color="#141330">l</font> <font color="#BF0A30">F</font><font color="#141330">a</font><font color="#BF0A30">c</font><font color="#141330">t</font><font color="#BF0A30">s</font></string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
