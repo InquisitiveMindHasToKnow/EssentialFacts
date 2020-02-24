@@ -79,10 +79,12 @@ class StudyWithAudioFragment : Fragment() {
 
         binding.audioBackButton.setOnClickListener {
 
+            mediaPlayer.seekTo(mediaPlayer.currentPosition - 6000)
         }
 
         binding.audioForwardButton.setOnClickListener {
 
+            mediaPlayer.seekTo(mediaPlayer.currentPosition + 6000)
         }
 
         mediaPlayer.setOnCompletionListener {
