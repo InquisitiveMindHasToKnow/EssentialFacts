@@ -58,6 +58,11 @@ class StudyWithAudioFragment : Fragment() {
         val isPlaying: Boolean = mediaPlayer.isPlaying
         binding.audioPlayPauseButton.setImageResource(if (isPlaying) R.drawable.pause_icon else R.drawable.play_arrow)
 
+        val nameOfAudio: String = resources.getResourceName(R.raw.civicquestions)
+
+
+        binding.audioNameTextview.text = resources.getResourceName(R.raw.civicquestions).subSequence(41, nameOfAudio.length)
+
         binding.audioPlayPauseButton.setOnClickListener {
             val isPlaying: Boolean = mediaPlayer.isPlaying
 
