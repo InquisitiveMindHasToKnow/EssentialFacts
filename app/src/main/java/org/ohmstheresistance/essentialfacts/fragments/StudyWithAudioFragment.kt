@@ -27,7 +27,7 @@ class StudyWithAudioFragment : Fragment() {
     lateinit var runnable: Runnable
     lateinit var currentTimeTextView: TextView
     lateinit var maxTimeTextView: TextView
-    var currentPosition = 0
+    var currentPosition: Long = 0
 
 
     override fun onCreateView(
@@ -117,7 +117,7 @@ class StudyWithAudioFragment : Fragment() {
 
         val maxTime = mediaPlayer.duration
 
-        val currentTimeInMins = TimeUnit.MINUTES.toMinutes(currentPosition.toLong())
+        val currentTimeInMins = TimeUnit.MINUTES.toMinutes(currentPosition)
         val maxTimeInMins = TimeUnit.MINUTES.toMinutes(maxTime.toLong())
 
         val ctMinutes = (currentTimeInMins / 1000 / 60)
@@ -136,21 +136,24 @@ class StudyWithAudioFragment : Fragment() {
     private fun updateSeekBar(){
         seekBar.progress = mediaPlayer.currentPosition
 
+        currentPosition = mediaPlayer.currentPosition.toLong()
+
+        val currentPositionTimeInMins = TimeUnit.MINUTES.toMinutes(currentPosition)
+        val minutes = (currentPositionTimeInMins / 1000 / 60)
+        val seconds = (currentPositionTimeInMins / 1000) % 60
+
+        val currentPositionInMinutes =
+            String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
+
         if(mediaPlayer.isPlaying){
 
             runnable = Runnable {
                 run{
 
                     updateSeekBar()
+                    currentTimeTextView.text = currentPositionInMinutes
                 }
             }
-            val minutes = (currentPosition / 1000 / 60)
-            val seconds = (currentPosition / 1000) % 60
-            val currentPositionInMinutes =
-                String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
-
-            currentTimeTextView.text = currentPositionInMinutes
-
             handler.postDelayed(runnable, 1000)
         }
     }
