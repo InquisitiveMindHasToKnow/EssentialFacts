@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Runnable
 import org.ohmstheresistance.essentialfacts.R
+import org.ohmstheresistance.essentialfacts.data.AudioFilesInfo
 import org.ohmstheresistance.essentialfacts.databinding.StudyWithAudioFragmentBinding
 import org.ohmstheresistance.essentialfacts.recyclerview.AudioFilesAdapter
 import java.util.*
@@ -40,6 +41,7 @@ class StudyWithAudioFragment : Fragment() {
     lateinit var audioList: ArrayList<Int>
     var elapsedTime: Long = 0
     var path: Int = 0
+    var pathQuestion: String = ""
 
     lateinit var audioFilesAdapter: AudioFilesAdapter
 
@@ -72,21 +74,38 @@ class StudyWithAudioFragment : Fragment() {
         backButton = binding.audioBackButton
         forwardButton = binding.audioForwardButton
 
-        audioList = arrayListOf(R.raw.branches_of_government, R.raw.amount_of_senators, R.raw.delclaration_of_independence, R.raw.economic_system_of_us,
-            R.raw.first_ten_amendments_of_constitution, R.raw.first_three_words_of_constitution, R.raw.freedom_of_religion)
+//        audioList = arrayListOf(R.raw.branches_of_government, R.raw.amount_of_senators, R.raw.delclaration_of_independence, R.raw.economic_system_of_us,
+//            R.raw.first_ten_amendments_of_constitution, R.raw.first_three_words_of_constitution, R.raw.freedom_of_religion)
+//        audioList.shuffle()
+//        path = audioList[2]
+//
+//        mediaPlayer = MediaPlayer.create(context, path)
+//        seekBar.max = mediaPlayer.duration
+//
+//        val nameOfAudio: String = resources.getResourceName(path)
+//        audioNameTextView.text = resources.getResourceName(path).subSequence(41, nameOfAudio.length)
 
-        audioList.shuffle()
+        val audioFiles = ArrayList<AudioFilesInfo>()
+        audioFiles.add(AudioFilesInfo("What are the 3 branches of government?", R.raw.branches_of_government))
+        audioFiles.add(AudioFilesInfo("How many senators are there?", R.raw.amount_of_senators))
+        audioFiles.add(AudioFilesInfo("All Questions and Answers", R.raw.civicquestions))
+        audioFiles.add(AudioFilesInfo("What do we call the first 10 amendments of the Constitution?", R.raw.first_ten_amendments_of_constitution))
+        audioFiles.add(AudioFilesInfo("What are the first three words of The Constitution?", R.raw.first_three_words_of_constitution))
+        audioFiles.add(AudioFilesInfo("How long are senators elected for?", R.raw.senator_term_length))
+        audioFiles.add(AudioFilesInfo("What is the economic system of the U.S.?", R.raw.economic_system_of_us))
+        audioFiles.add(AudioFilesInfo("What stops one branch of government from becoming too powerful?", R.raw.stopping_goverment_overreach))
 
-        path = audioList[2]
+        audioFiles.shuffle()
+
+        path = audioFiles[4].rawName
+        pathQuestion = audioFiles[4].name
+
+        audioNameTextView.text = pathQuestion
 
         mediaPlayer = MediaPlayer.create(context, path)
         seekBar.max = mediaPlayer.duration
 
-        val nameOfAudio: String = resources.getResourceName(path)
-        audioNameTextView.text = resources.getResourceName(path).subSequence(41, nameOfAudio.length)
-
-
-        audioFilesAdapter = AudioFilesAdapter(audioList)
+        audioFilesAdapter = AudioFilesAdapter(audioFiles)
         audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         audioRecyclerView.adapter = audioFilesAdapter
 
@@ -128,6 +147,7 @@ class StudyWithAudioFragment : Fragment() {
                 seekBar.progress = 0
 
                 val newPath = path--
+               // val newPathQuestion = pathQuestion
 
                 mediaPlayer = MediaPlayer.create(context, newPath)
                 seekBar.max = mediaPlayer.duration
@@ -135,8 +155,7 @@ class StudyWithAudioFragment : Fragment() {
                 initializeSeekBar()
 
                 val nameOfAudio: String = resources.getResourceName(newPath)
-                audioNameTextView.text =
-                    resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
+                audioNameTextView.text = resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
 
                 playPauseButton.setImageResource(R.drawable.play_arrow)
 
