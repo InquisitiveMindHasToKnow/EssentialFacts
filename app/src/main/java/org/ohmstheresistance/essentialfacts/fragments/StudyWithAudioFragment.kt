@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit
 
 class StudyWithAudioFragment : Fragment() {
 
+    lateinit var binding: StudyWithAudioFragmentBinding
     lateinit var mediaPlayer: MediaPlayer
     lateinit var seekBar: SeekBar
     lateinit var handler: Handler
@@ -36,7 +37,7 @@ class StudyWithAudioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<StudyWithAudioFragmentBinding>(
+         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.study_with_audio_fragment,
             container,
@@ -152,6 +153,16 @@ class StudyWithAudioFragment : Fragment() {
         val currentPositionInMinutes =
             String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
 
+
+        val maxTime = mediaPlayer.duration
+        val timeLeft = maxTime - currentPosition
+
+        val maxTimeInMins = TimeUnit.MINUTES.toMinutes(timeLeft)
+
+        val maxTimeMinutes = (maxTimeInMins / 1000 / 60)
+        val maxTimeSeconds = (maxTimeInMins / 1000) % 60
+        val maxTimeInMinutes = String.format(Locale.getDefault(), "%02d:%02d", maxTimeMinutes, maxTimeSeconds)
+
         if(mediaPlayer.isPlaying){
 
             runnable = Runnable {
@@ -159,6 +170,7 @@ class StudyWithAudioFragment : Fragment() {
 
                     updateSeekBar()
                     currentTimeTextView.text = currentPositionInMinutes
+                    maxTimeTextView.text = maxTimeInMinutes
                 }
             }
             handler.postDelayed(runnable, 1000)
@@ -173,6 +185,5 @@ class StudyWithAudioFragment : Fragment() {
         mediaPlayer.release()
 
         handler.removeCallbacksAndMessages(null)
-
     }
 }
