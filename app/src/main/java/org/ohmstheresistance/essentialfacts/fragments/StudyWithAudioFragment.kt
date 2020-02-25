@@ -11,12 +11,16 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Runnable
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.databinding.StudyWithAudioFragmentBinding
+import org.ohmstheresistance.essentialfacts.recyclerview.AudioFilesAdapter
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 
 class StudyWithAudioFragment : Fragment() {
@@ -33,9 +37,11 @@ class StudyWithAudioFragment : Fragment() {
     lateinit var backButton: FloatingActionButton
     lateinit var forwardButton: FloatingActionButton
 
-    lateinit var audioList: MutableList<Int>
+    lateinit var audioList: ArrayList<Int>
     var elapsedTime: Long = 0
     var path: Int = 0
+
+    lateinit var audioFilesAdapter: AudioFilesAdapter
 
 
     override fun onCreateView(
@@ -52,13 +58,9 @@ class StudyWithAudioFragment : Fragment() {
 
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
     private fun setUp(){
 
+        val audioRecyclerView: RecyclerView = binding.audioRecyclerView
         handler = Handler()
         runnable = Runnable {}
 
@@ -70,7 +72,7 @@ class StudyWithAudioFragment : Fragment() {
         backButton = binding.audioBackButton
         forwardButton = binding.audioForwardButton
 
-        audioList = mutableListOf(R.raw.branches_of_government, R.raw.amount_of_senators, R.raw.delclaration_of_independence, R.raw.economic_system_of_us,
+        audioList = arrayListOf(R.raw.branches_of_government, R.raw.amount_of_senators, R.raw.delclaration_of_independence, R.raw.economic_system_of_us,
             R.raw.first_ten_amendments_of_constitution, R.raw.first_three_words_of_constitution, R.raw.freedom_of_religion)
 
         audioList.shuffle()
@@ -82,6 +84,12 @@ class StudyWithAudioFragment : Fragment() {
 
         val nameOfAudio: String = resources.getResourceName(path)
         audioNameTextView.text = resources.getResourceName(path).subSequence(41, nameOfAudio.length)
+
+
+        audioFilesAdapter = AudioFilesAdapter(audioList)
+        audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        audioRecyclerView.adapter = audioFilesAdapter
+
     }
 
     private fun setUpMediaPlayer() {
@@ -114,7 +122,29 @@ class StudyWithAudioFragment : Fragment() {
 
         backButton.setOnClickListener {
 
-            mediaPlayer.seekTo(mediaPlayer.currentPosition - 6000)
+            //mediaPlayer.seekTo(mediaPlayer.currentPosition - 6000)
+            if (mediaPlayer != null) {
+                mediaPlayer.reset()
+                seekBar.progress = 0
+
+                val newPath = path--
+
+                mediaPlayer = MediaPlayer.create(context, newPath)
+                seekBar.max = mediaPlayer.duration
+
+                initializeSeekBar()
+
+                val nameOfAudio: String = resources.getResourceName(newPath)
+                audioNameTextView.text =
+                    resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
+
+                playPauseButton.setImageResource(R.drawable.play_arrow)
+
+                mediaPlayer.setOnCompletionListener {
+                    mediaPlayer.pause()
+                    playPauseButton.setImageResource(R.drawable.play_arrow)
+                }
+            }
         }
 
         forwardButton.setOnClickListener {
@@ -134,6 +164,11 @@ class StudyWithAudioFragment : Fragment() {
                     resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
 
                 playPauseButton.setImageResource(R.drawable.play_arrow)
+
+                mediaPlayer.setOnCompletionListener {
+                    mediaPlayer.pause()
+                    playPauseButton.setImageResource(R.drawable.play_arrow)
+                }
             }
         }
     }

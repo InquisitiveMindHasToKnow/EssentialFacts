@@ -16,6 +16,6 @@
 
     <item
         android:id="@+id/studyWithAudioFragment"
-        android:icon="@drawable/study"
+        android:icon="@drawable/headset"
         android:title="Audio"/>
 </menu>
