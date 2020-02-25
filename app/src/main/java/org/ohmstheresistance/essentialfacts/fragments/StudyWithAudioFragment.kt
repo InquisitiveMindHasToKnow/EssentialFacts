@@ -96,7 +96,6 @@ class StudyWithAudioFragment : Fragment() {
 
         playPauseButton.setOnClickListener {
             val isPlaying: Boolean = mediaPlayer.isPlaying
-
             mediaPlayer.start()
 
             if (isPlaying) {
@@ -120,9 +119,23 @@ class StudyWithAudioFragment : Fragment() {
 
         forwardButton.setOnClickListener {
 
-            mediaPlayer.seekTo(mediaPlayer.currentPosition + 6000)
-        }
+            if (mediaPlayer != null) {
+                mediaPlayer.reset()
+                seekBar.progress = 0
 
+                val newPath = path++
+                mediaPlayer = MediaPlayer.create(context, newPath)
+                seekBar.max = mediaPlayer.duration
+
+                initializeSeekBar()
+
+                val nameOfAudio: String = resources.getResourceName(newPath)
+                audioNameTextView.text =
+                    resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
+
+                playPauseButton.setImageResource(R.drawable.play_arrow)
+            }
+        }
     }
 
     private fun initializeSeekBar() {
