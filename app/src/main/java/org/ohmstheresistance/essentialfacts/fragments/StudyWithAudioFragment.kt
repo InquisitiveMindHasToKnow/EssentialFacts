@@ -112,6 +112,22 @@ class StudyWithAudioFragment : Fragment() {
         audioFiles.add(AudioFilesInfo("Who lived in the U.S. before europeans came?", R.raw.in_america_before_europeans))
         audioFiles.add(AudioFilesInfo("Lincoln's importance", R.raw.lincolns_importance))
         audioFiles.add(AudioFilesInfo("What month do we elect presidents?", R.raw.month_of_pres_election))
+        audioFiles.add(AudioFilesInfo("Movement to end discrimination", R.raw.movement_to_end_discrimination))
+        audioFiles.add(AudioFilesInfo("Native American tribes", R.raw.native_american_tribes))
+        audioFiles.add(AudioFilesInfo("Ocean on U.S. east coast", R.raw.ocean_on_east_of_us))
+        audioFiles.add(AudioFilesInfo("Ocean on U.S. west coast", R.raw.ocean_on_west_of_us))
+        audioFiles.add(AudioFilesInfo("Thirteen original states", R.raw.original_states))
+        audioFiles.add(AudioFilesInfo("President during WWI", R.raw.pres_during_ww1))
+        audioFiles.add(AudioFilesInfo("President during WWII", R.raw.pres_during_ww2))
+        audioFiles.add(AudioFilesInfo("President term length", R.raw.president_term_length))
+        audioFiles.add(AudioFilesInfo("Problems that led to Civil War", R.raw.problems_leading_to_civil_war))
+        audioFiles.add(AudioFilesInfo("Promise when becoming a U.S. citizen", R.raw.promise_when_becoming_us_citizen))
+        audioFiles.add(AudioFilesInfo("Reasons colonists came to America", R.raw.reasons_colonists_came_to_america))
+        audioFiles.add(AudioFilesInfo("Rights in Declaration of Independence", R.raw.rights_in_declaration_of_independence))
+        audioFiles.add(AudioFilesInfo("Rights of everyone in the U.S.", R.raw.rights_of_everyone))
+        audioFiles.add(AudioFilesInfo("Role of President's cabinet", R.raw.role_of_cabinet))
+        audioFiles.add(AudioFilesInfo("Role of judicial branch of the government", R.raw.role_of_judicial_branch))
+
 
 
         audioFileIndex = audioFiles.size - 1
