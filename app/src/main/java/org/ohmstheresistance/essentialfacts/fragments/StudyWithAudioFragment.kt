@@ -38,7 +38,6 @@ class StudyWithAudioFragment : Fragment() {
     lateinit var backButton: FloatingActionButton
     lateinit var forwardButton: FloatingActionButton
 
-    lateinit var audioList: ArrayList<Int>
     var elapsedTime: Long = 0
     var path: Int = 0
     var pathQuestion: String = ""
@@ -85,6 +84,35 @@ class StudyWithAudioFragment : Fragment() {
         audioFiles.add(AudioFilesInfo("Senator term length", R.raw.senator_term_length))
         audioFiles.add(AudioFilesInfo("Economic system of the U.S.", R.raw.economic_system_of_us))
         audioFiles.add(AudioFilesInfo("Stopping over reach", R.raw.stopping_goverment_overreach))
+        audioFiles.add(AudioFilesInfo("Age to vote", R.raw.age_to_vote_for_president))
+        audioFiles.add(AudioFilesInfo("We pledge loyalty to", R.raw.allegiance_pledge_loyalty))
+        audioFiles.add(AudioFilesInfo("Reasons Benjamin Franklin is well known", R.raw.ben_franklin_famous_for))
+        audioFiles.add(AudioFilesInfo("Cabinet level positions", R.raw.cabinet_positions))
+        audioFiles.add(AudioFilesInfo("Brought to U.S. as slaves", R.raw.brought_to_america_as_slaves))
+        audioFiles.add(AudioFilesInfo("Cold War main concern", R.raw.cold_war_fears))
+        audioFiles.add(AudioFilesInfo("Commander in Chief of military", R.raw.commander_in_chief_of_military))
+        audioFiles.add(AudioFilesInfo("Constitutional Convention", R.raw.constitutional_convention))
+        audioFiles.add(AudioFilesInfo("When Declaration of Independence was adopted", R.raw.declaration_of_independence_adopted))
+        audioFiles.add(AudioFilesInfo("What did the Declaration of Independence do?", R.raw.declaration_of_independence))
+        audioFiles.add(AudioFilesInfo("Eisenhower served in which war?", R.raw.eisenhower_war))
+        audioFiles.add(AudioFilesInfo("What did the Emancipation Proclamation do?", R.raw.emancipation_proclamation))
+        audioFiles.add(AudioFilesInfo("Father of our country", R.raw.father_of_country))
+        audioFiles.add(AudioFilesInfo("Last day to submit tax form", R.raw.fed_tax_form_final_date))
+        audioFiles.add(AudioFilesInfo("Powers of Federal government", R.raw.federal_govt_powers))
+        audioFiles.add(AudioFilesInfo("Federalist Papers writers", R.raw.federalist_papers_writers))
+        audioFiles.add(AudioFilesInfo("First U.S. President", R.raw.first_president))
+        audioFiles.add(AudioFilesInfo("Why are there 50 stars on the flag", R.raw.flag_fifty_stars))
+        audioFiles.add(AudioFilesInfo("Why are there 13 stripes on the flag?", R.raw.flag_thirteen_stripes))
+        audioFiles.add(AudioFilesInfo("Freedom of religion", R.raw.freedom_of_religion))
+        audioFiles.add(AudioFilesInfo("First amendment freedoms", R.raw.freedoms_from_first_amendment))
+        audioFiles.add(AudioFilesInfo("Highest U.S. Court", R.raw.highest_us_court))
+        audioFiles.add(AudioFilesInfo("House Representative term length", R.raw.house_rep_term_length))
+        audioFiles.add(AudioFilesInfo("Who takes over if President and Vice President can't serve?", R.raw.if_pres_and_vp_cant_serve))
+        audioFiles.add(AudioFilesInfo("Who takes over if the President can't serve?", R.raw.if_pres_cant_serve))
+        audioFiles.add(AudioFilesInfo("Who lived in the U.S. before europeans came?", R.raw.in_america_before_europeans))
+        audioFiles.add(AudioFilesInfo("Lincoln's importance", R.raw.lincolns_importance))
+        audioFiles.add(AudioFilesInfo("What month do we elect presidents?", R.raw.month_of_pres_election))
+
 
         audioFileIndex = audioFiles.size - 1
 
