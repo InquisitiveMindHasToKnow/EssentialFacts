@@ -10,8 +10,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/audio_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_marginBottom="2dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="164dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/seek_bar_linear"
@@ -35,7 +36,9 @@
         android:textColor="#FFF"
         android:textSize="14sp"
         android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toTopOf="@id/audio_seekbar"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/audio_name_textview"
+        app:layout_constraintTop_toBottomOf="@id/audio_seekbar"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -46,7 +49,9 @@
         android:textColor="#FFF"
         android:textSize="14sp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@id/audio_seekbar"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/audio_name_textview"
+        app:layout_constraintTop_toBottomOf="@id/audio_seekbar"
         app:layout_constraintEnd_toEndOf="parent"
         />
 
@@ -57,6 +62,7 @@
             app:layout_constraintTop_toBottomOf="@id/audio_max_time_textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/audio_name_textview"
             />
 
         <TextView
@@ -66,7 +72,7 @@
             android:textColor="#FFF"
             android:textSize="16sp"
             android:text="All 100 questions"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toBottomOf="@id/audio_seekbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
