@@ -42,6 +42,8 @@ class StudyWithAudioFragment : Fragment() {
     var elapsedTime: Long = 0
     var path: Int = 0
     var pathQuestion: String = ""
+    var audioFileIndex = 0
+    lateinit var audioFiles: ArrayList<AudioFilesInfo>
 
     lateinit var audioFilesAdapter: AudioFilesAdapter
 
@@ -74,34 +76,22 @@ class StudyWithAudioFragment : Fragment() {
         backButton = binding.audioBackButton
         forwardButton = binding.audioForwardButton
 
-//        audioList = arrayListOf(R.raw.branches_of_government, R.raw.amount_of_senators, R.raw.delclaration_of_independence, R.raw.economic_system_of_us,
-//            R.raw.first_ten_amendments_of_constitution, R.raw.first_three_words_of_constitution, R.raw.freedom_of_religion)
-//        audioList.shuffle()
-//        path = audioList[2]
-//
-//        mediaPlayer = MediaPlayer.create(context, path)
-//        seekBar.max = mediaPlayer.duration
-//
-//        val nameOfAudio: String = resources.getResourceName(path)
-//        audioNameTextView.text = resources.getResourceName(path).subSequence(41, nameOfAudio.length)
+        audioFiles = ArrayList()
+        audioFiles.add(AudioFilesInfo("Three branches of government", R.raw.branches_of_government))
+        audioFiles.add(AudioFilesInfo("Total senators", R.raw.amount_of_senators))
+        audioFiles.add(AudioFilesInfo("All questions and answers", R.raw.civicquestions))
+        audioFiles.add(AudioFilesInfo("First 10 amendments of the Constitution", R.raw.first_ten_amendments_of_constitution))
+        audioFiles.add(AudioFilesInfo("First three words of The Constitution", R.raw.first_three_words_of_constitution))
+        audioFiles.add(AudioFilesInfo("Senator term length", R.raw.senator_term_length))
+        audioFiles.add(AudioFilesInfo("Economic system of the U.S.", R.raw.economic_system_of_us))
+        audioFiles.add(AudioFilesInfo("Stopping over reach", R.raw.stopping_goverment_overreach))
 
-        val audioFiles = ArrayList<AudioFilesInfo>()
-        audioFiles.add(AudioFilesInfo("What are the 3 branches of government?", R.raw.branches_of_government))
-        audioFiles.add(AudioFilesInfo("How many senators are there?", R.raw.amount_of_senators))
-        audioFiles.add(AudioFilesInfo("All Questions and Answers", R.raw.civicquestions))
-        audioFiles.add(AudioFilesInfo("What do we call the first 10 amendments of the Constitution?", R.raw.first_ten_amendments_of_constitution))
-        audioFiles.add(AudioFilesInfo("What are the first three words of The Constitution?", R.raw.first_three_words_of_constitution))
-        audioFiles.add(AudioFilesInfo("How long are senators elected for?", R.raw.senator_term_length))
-        audioFiles.add(AudioFilesInfo("What is the economic system of the U.S.?", R.raw.economic_system_of_us))
-        audioFiles.add(AudioFilesInfo("What stops one branch of government from becoming too powerful?", R.raw.stopping_goverment_overreach))
+        audioFileIndex = audioFiles.size - 1
 
-        audioFiles.shuffle()
-
-        path = audioFiles[4].rawName
-        pathQuestion = audioFiles[4].name
+        path = audioFiles[audioFileIndex].rawName
+        pathQuestion = audioFiles[audioFileIndex].name
 
         audioNameTextView.text = pathQuestion
-
         mediaPlayer = MediaPlayer.create(context, path)
         seekBar.max = mediaPlayer.duration
 
@@ -140,22 +130,24 @@ class StudyWithAudioFragment : Fragment() {
         }
 
         backButton.setOnClickListener {
+            forwardButton.isEnabled = true
 
-            //mediaPlayer.seekTo(mediaPlayer.currentPosition - 6000)
             if (mediaPlayer != null) {
                 mediaPlayer.reset()
                 seekBar.progress = 0
 
-                val newPath = path--
-               // val newPathQuestion = pathQuestion
+                val newPath = audioFiles[audioFileIndex--].rawName
+                val newPathTitle = audioFiles[audioFileIndex--].name
+
+                println("back" + newPath)
+                println("back"+ newPathTitle)
 
                 mediaPlayer = MediaPlayer.create(context, newPath)
                 seekBar.max = mediaPlayer.duration
 
                 initializeSeekBar()
 
-                val nameOfAudio: String = resources.getResourceName(newPath)
-                audioNameTextView.text = resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
+                audioNameTextView.text = newPathTitle
 
                 playPauseButton.setImageResource(R.drawable.play_arrow)
 
@@ -164,23 +156,30 @@ class StudyWithAudioFragment : Fragment() {
                     playPauseButton.setImageResource(R.drawable.play_arrow)
                 }
             }
+            if(audioFileIndex == 0){
+                backButton.isEnabled = false
+            }
         }
 
         forwardButton.setOnClickListener {
+            backButton.isEnabled = true
 
             if (mediaPlayer != null) {
                 mediaPlayer.reset()
                 seekBar.progress = 0
 
-                val newPath = path++
+                val newPath = audioFiles[audioFileIndex++].rawName
+                val newPathTitle = audioFiles[audioFileIndex++].name
+
+                println("forward" + newPath)
+                println("forward"+ newPathTitle)
+
                 mediaPlayer = MediaPlayer.create(context, newPath)
                 seekBar.max = mediaPlayer.duration
 
                 initializeSeekBar()
 
-                val nameOfAudio: String = resources.getResourceName(newPath)
-                audioNameTextView.text =
-                    resources.getResourceName(newPath).subSequence(41, nameOfAudio.length)
+                audioNameTextView.text = newPathTitle
 
                 playPauseButton.setImageResource(R.drawable.play_arrow)
 
@@ -188,6 +187,9 @@ class StudyWithAudioFragment : Fragment() {
                     mediaPlayer.pause()
                     playPauseButton.setImageResource(R.drawable.play_arrow)
                 }
+            }
+            if(audioFileIndex == audioFiles.size - 1){
+                forwardButton.isEnabled = false
             }
         }
     }
