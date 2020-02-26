@@ -167,12 +167,9 @@ class StudyWithAudioFragment : Fragment() {
         audioFilesList.add(AudioFilesInfo("Why colonists fought the British", R.raw.why_colonists_fought_british))
         audioFilesList.add(AudioFilesInfo("WWII enemies", R.raw.ww2_enemies))
 
+        audioFilesList.shuffle()
 
-
-
-
-
-        audioFileIndex = audioFilesList.size - 1
+        audioFileIndex = (audioFilesList.size - 1) / 2
 
         path = audioFilesList[audioFileIndex].rawName
         pathQuestion = audioFilesList[audioFileIndex].name
@@ -222,20 +219,19 @@ class StudyWithAudioFragment : Fragment() {
                 mediaPlayer.reset()
                 seekBar.progress = 0
 
-                val newPath = audioFilesList[audioFileIndex--].rawName
-                val newPathTitle = audioFilesList[audioFileIndex--].name
+                audioFileIndex--
 
-                println("back" + newPath)
-                println("back"+ newPathTitle)
+                path = audioFilesList[audioFileIndex].rawName
+                val newPathTitle = audioFilesList[audioFileIndex].name
 
-                mediaPlayer = MediaPlayer.create(context, newPath)
+                mediaPlayer = MediaPlayer.create(context, path)
                 seekBar.max = mediaPlayer.duration
+                audioNameTextView.text = newPathTitle
+                playPauseButton.setImageResource(R.drawable.play_arrow)
 
                 initializeSeekBar()
 
-                audioNameTextView.text = newPathTitle
-
-                playPauseButton.setImageResource(R.drawable.play_arrow)
+                println("Current Index of List on backward" + audioFileIndex)
 
                 mediaPlayer.setOnCompletionListener {
                     mediaPlayer.pause()
@@ -254,20 +250,18 @@ class StudyWithAudioFragment : Fragment() {
                 mediaPlayer.reset()
                 seekBar.progress = 0
 
-                val newPath = audioFilesList[audioFileIndex++].rawName
-                val newPathTitle = audioFilesList[audioFileIndex++].name
+                audioFileIndex++
 
-                println("forward" + newPath)
-                println("forward"+ newPathTitle)
+                path = audioFilesList[audioFileIndex].rawName
+                val newPathTitle = audioFilesList[audioFileIndex].name
 
-                mediaPlayer = MediaPlayer.create(context, newPath)
+                mediaPlayer = MediaPlayer.create(context, path)
                 seekBar.max = mediaPlayer.duration
+                audioNameTextView.text = newPathTitle
+                playPauseButton.setImageResource(R.drawable.play_arrow)
 
                 initializeSeekBar()
-
-                audioNameTextView.text = newPathTitle
-
-                playPauseButton.setImageResource(R.drawable.play_arrow)
+                println("Current Index of List on forward" + audioFileIndex)
 
                 mediaPlayer.setOnCompletionListener {
                     mediaPlayer.pause()
