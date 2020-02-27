@@ -27,17 +27,19 @@ lateinit var mediaPlayer: MediaPlayer
 lateinit var audioNameTextView: TextView
 lateinit var seekBar: SeekBar
 lateinit var playPauseButton: FloatingActionButton
+lateinit var backButton: FloatingActionButton
+lateinit var forwardButton: FloatingActionButton
 var audioFileIndex = 0
 lateinit var handler: Handler
-var path: Int = 0
+
 
 class StudyWithAudioFragment : Fragment(){
     lateinit var binding: StudyWithAudioFragmentBinding
     lateinit var runnable: Runnable
     lateinit var currentTimeTextView: TextView
     lateinit var maxTimeTextView: TextView
-    lateinit var backButton: FloatingActionButton
-    lateinit var forwardButton: FloatingActionButton
+
+    var path: Int = 0
     var elapsedTime: Long = 0
     var pathQuestion: String = ""
     lateinit var audioFilesList: ArrayList<AudioFilesInfo>
@@ -236,9 +238,7 @@ class StudyWithAudioFragment : Fragment(){
                     playPauseButton.setImageResource(R.drawable.play_arrow)
                 }
             }
-            if(audioFileIndex == 0){
-                backButton.isEnabled = false
-            }
+            backButton.isEnabled = audioFileIndex != 0
         }
 
         forwardButton.setOnClickListener {
@@ -260,15 +260,15 @@ class StudyWithAudioFragment : Fragment(){
 
                 initializeSeekBar()
                 println("Current Index of List on forward" + audioFileIndex)
+                println("max index" + audioFilesList.size)
+
 
                 mediaPlayer.setOnCompletionListener {
                     mediaPlayer.pause()
                     playPauseButton.setImageResource(R.drawable.play_arrow)
                 }
             }
-            if(audioFileIndex == audioFilesList.size - 1){
-                forwardButton.isEnabled = false
-            }
+            forwardButton.isEnabled = audioFileIndex != audioFilesList.size - 1
         }
     }
 

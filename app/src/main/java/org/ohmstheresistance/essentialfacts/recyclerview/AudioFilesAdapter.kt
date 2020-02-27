@@ -45,6 +45,10 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                 mediaPlayer.pause()
                 playPauseButton.setImageResource(R.drawable.play_arrow)
             }
+
+            backButton.isEnabled = audioFileIndex != 0
+
+            forwardButton.isEnabled = audioFileIndex != 90
         }
     }
 
