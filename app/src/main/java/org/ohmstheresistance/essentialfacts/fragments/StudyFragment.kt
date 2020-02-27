@@ -13,10 +13,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.study_fragment.view.*
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.databinding.StudyFragmentBinding
-import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
+import org.ohmstheresistance.essentialfacts.data.EssentialFactsInfo
 import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfoService
 import org.ohmstheresistance.essentialfacts.recyclerview.EssentialFactsAdapter
 import retrofit2.Call
