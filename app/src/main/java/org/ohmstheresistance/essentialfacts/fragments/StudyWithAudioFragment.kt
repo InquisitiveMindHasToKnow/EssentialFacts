@@ -23,25 +23,23 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
+lateinit var mediaPlayer: MediaPlayer
+lateinit var audioNameTextView: TextView
+lateinit var seekBar: SeekBar
+lateinit var playPauseButton: FloatingActionButton
+var audioFileIndex = 0
+lateinit var handler: Handler
+var path: Int = 0
 
-class StudyWithAudioFragment : Fragment() {
-
+class StudyWithAudioFragment : Fragment(){
     lateinit var binding: StudyWithAudioFragmentBinding
-    lateinit var mediaPlayer: MediaPlayer
-    lateinit var seekBar: SeekBar
-    lateinit var handler: Handler
     lateinit var runnable: Runnable
     lateinit var currentTimeTextView: TextView
     lateinit var maxTimeTextView: TextView
-    lateinit var audioNameTextView: TextView
-    lateinit var playPauseButton: FloatingActionButton
     lateinit var backButton: FloatingActionButton
     lateinit var forwardButton: FloatingActionButton
-
     var elapsedTime: Long = 0
-    var path: Int = 0
     var pathQuestion: String = ""
-    var audioFileIndex = 0
     lateinit var audioFilesList: ArrayList<AudioFilesInfo>
 
     lateinit var audioFilesAdapter: AudioFilesAdapter
@@ -301,7 +299,6 @@ class StudyWithAudioFragment : Fragment() {
 
                 if (fromUser && mediaPlayer != null) {
                     mediaPlayer.seekTo(progress)
-
                 }
             }
 
@@ -366,4 +363,6 @@ class StudyWithAudioFragment : Fragment() {
 
         stopAudio()
     }
+
+
 }

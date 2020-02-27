@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.study_info_itemview.view.*
 import org.ohmstheresistance.essentialfacts.R
-import org.ohmstheresistance.essentialfacts.network.EssentialFactsInfo
+import org.ohmstheresistance.essentialfacts.data.EssentialFactsInfo
 
 class EssentialFactsAdapter(private val studyInfoList: ArrayList<EssentialFactsInfo>) : RecyclerView.Adapter<EssentialFactsAdapter.ViewHolder>() {
 
@@ -18,8 +18,6 @@ class EssentialFactsAdapter(private val studyInfoList: ArrayList<EssentialFactsI
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(studyInfoList[position])
-
-
     }
 
     override fun getItemCount(): Int {
