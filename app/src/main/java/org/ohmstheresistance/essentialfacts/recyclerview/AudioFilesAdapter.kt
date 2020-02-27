@@ -37,16 +37,14 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
             seekBar.progress = 0
             seekBar.max = mediaPlayer.duration
+
             audioNameTextView.text = audioPosition.name
+            playPauseButton.performClick()
 
-            //mediaPlayer.start()
-             playPauseButton.setImageResource(R.drawable.play_arrow)
-
-        }
-
-        mediaPlayer.setOnCompletionListener {
-            mediaPlayer.pause()
-            playPauseButton.setImageResource(R.drawable.play_arrow)
+            mediaPlayer.setOnCompletionListener {
+                mediaPlayer.pause()
+                playPauseButton.setImageResource(R.drawable.play_arrow)
+            }
         }
     }
 
