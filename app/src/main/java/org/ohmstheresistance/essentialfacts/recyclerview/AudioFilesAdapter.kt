@@ -55,16 +55,19 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                     forwardButton.performClick()
                     forwardButton.isSoundEffectsEnabled = false
                 }else {
-                    audioFileIndex = -1
+                    audioFileIndex = 0
 
                     playPauseButton.performClick()
                     playPauseButton.isSoundEffectsEnabled = false
                 }
 
+                if(audioFileIndex == 89 && forwardButton.isPressed){
+                    audioFileIndex = 0
+                }
+                if(audioFileIndex == 0 && backButton.isPressed){
+                    audioFileIndex = 89
+                }
             }
-                backButton.isEnabled = audioFileIndex != 0
-
-                forwardButton.isEnabled = audioFileIndex != 89
         }
     }
     override fun getItemCount(): Int {

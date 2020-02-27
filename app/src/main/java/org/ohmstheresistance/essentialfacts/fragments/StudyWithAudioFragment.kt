@@ -170,7 +170,7 @@ class StudyWithAudioFragment : Fragment(){
 
         audioFilesList.shuffle()
 
-        audioFileIndex = (audioFilesList.size - 1) / 2
+        audioFileIndex = 0
 
         path = audioFilesList[audioFileIndex].rawName
         pathQuestion = audioFilesList[audioFileIndex].name
@@ -223,6 +223,8 @@ class StudyWithAudioFragment : Fragment(){
             mediaPlayer.reset()
             seekBar.progress = 0
 
+            scrollToTopOrBottom()
+
             audioFileIndex--
 
             path = audioFilesList[audioFileIndex].rawName
@@ -236,13 +238,13 @@ class StudyWithAudioFragment : Fragment(){
             playPauseButton.isSoundEffectsEnabled = false
 
             initializeSeekBar()
+            audio_recycler_view.smoothScrollToPosition(audioFileIndex)
 
             mediaPlayer.setOnCompletionListener {
 
                 audioFilesAdapter.notifyItemInserted(audioFileIndex)
                 forwardButton.performClick()
             }
-            backButton.isEnabled = audioFileIndex != 0
         }
 
         forwardButton.setOnClickListener {
@@ -251,6 +253,8 @@ class StudyWithAudioFragment : Fragment(){
 
             mediaPlayer.reset()
             seekBar.progress = 0
+
+            scrollToTopOrBottom()
 
             audioFileIndex++
 
@@ -276,13 +280,20 @@ class StudyWithAudioFragment : Fragment(){
                     forwardButton.performClick()
                     forwardButton.isSoundEffectsEnabled = false
                 }else {
-                    audioFileIndex = -1
+                    audioFileIndex = 0
 
                     playPauseButton.performClick()
                     playPauseButton.isSoundEffectsEnabled = false
                 }
             }
-            forwardButton.isEnabled = audioFileIndex != audioFilesList.size - 1
+        }
+    }
+    private fun scrollToTopOrBottom(){
+        if(audioFileIndex == 89 && forwardButton.isPressed){
+            audioFileIndex = 0
+        }
+        if(audioFileIndex == 0 && backButton.isPressed){
+            audioFileIndex = 89
         }
     }
 
@@ -377,6 +388,4 @@ class StudyWithAudioFragment : Fragment(){
 
         stopAudio()
     }
-
-
 }
