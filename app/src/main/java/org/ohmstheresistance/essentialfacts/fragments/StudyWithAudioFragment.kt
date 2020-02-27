@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.study_with_audio_fragment.*
 import kotlinx.coroutines.Runnable
 import org.ohmstheresistance.essentialfacts.R
 import org.ohmstheresistance.essentialfacts.data.AudioFilesInfo
@@ -198,6 +199,8 @@ class StudyWithAudioFragment : Fragment(){
             val isPlaying: Boolean = mediaPlayer.isPlaying
             mediaPlayer.start()
 
+            audioFilesAdapter.notifyItemChanged(audioFileIndex)
+
             if (isPlaying) {
 
                 playPauseButton.setImageResource(R.drawable.play_arrow)
@@ -215,6 +218,8 @@ class StudyWithAudioFragment : Fragment(){
         backButton.setOnClickListener {
             forwardButton.isEnabled = true
 
+            audioFilesAdapter.notifyItemChanged(audioFileIndex)
+
             mediaPlayer.reset()
             seekBar.progress = 0
 
@@ -229,21 +234,20 @@ class StudyWithAudioFragment : Fragment(){
 
             playPauseButton.performClick()
             playPauseButton.isSoundEffectsEnabled = false
-            // playPauseButton.setImageResource(R.drawable.play_arrow)
 
             initializeSeekBar()
 
-            println("Current Index of List on backward" + audioFileIndex)
-
             mediaPlayer.setOnCompletionListener {
-                mediaPlayer.pause()
-                playPauseButton.setImageResource(R.drawable.play_arrow)
+
+                audioFilesAdapter.notifyItemInserted(audioFileIndex)
+                forwardButton.performClick()
             }
             backButton.isEnabled = audioFileIndex != 0
         }
 
         forwardButton.setOnClickListener {
             backButton.isEnabled = true
+            audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             mediaPlayer.reset()
             seekBar.progress = 0
@@ -259,16 +263,24 @@ class StudyWithAudioFragment : Fragment(){
 
             playPauseButton.performClick()
             playPauseButton.isSoundEffectsEnabled = false
-            // playPauseButton.setImageResource(R.drawable.play_arrow)
 
             initializeSeekBar()
-            println("Current Index of List on forward" + audioFileIndex)
-            println("max index" + audioFilesList.size)
-
+            audio_recycler_view.smoothScrollToPosition(audioFileIndex)
 
             mediaPlayer.setOnCompletionListener {
-                mediaPlayer.pause()
-                playPauseButton.setImageResource(R.drawable.play_arrow)
+
+             audioFilesAdapter.notifyItemChanged(audioFileIndex)
+
+                if (audioFileIndex < 89) {
+
+                    forwardButton.performClick()
+                    forwardButton.isSoundEffectsEnabled = false
+                }else {
+                    audioFileIndex = -1
+
+                    playPauseButton.performClick()
+                    playPauseButton.isSoundEffectsEnabled = false
+                }
             }
             forwardButton.isEnabled = audioFileIndex != audioFilesList.size - 1
         }

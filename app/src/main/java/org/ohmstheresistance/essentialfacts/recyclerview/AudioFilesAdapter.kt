@@ -1,5 +1,6 @@
 package org.ohmstheresistance.essentialfacts.recyclerview
 
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,12 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
         val audioPosition = audioFilesList[position]
 
+        if(audioFileIndex == holder.layoutPosition ){
+            holder.itemView.audio_files_imageview.setBackgroundColor(Color.parseColor("#138b83"))
+        }else{
+            holder.itemView.audio_files_imageview.setBackgroundColor(Color.parseColor("#FFFFFF"))
+        }
+
         holder.itemView.setOnClickListener {
 
             mediaPlayer.release()
@@ -34,7 +41,6 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
             audioFileIndex = position
 
             mediaPlayer = MediaPlayer.create(holder.itemView.context, audioPosition.rawName)
-
             seekBar.progress = 0
             seekBar.max = mediaPlayer.duration
             audioNameTextView.text = audioPosition.name
@@ -43,18 +49,24 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
             playPauseButton.isSoundEffectsEnabled = false
 
             mediaPlayer.setOnCompletionListener {
-                mediaPlayer.reset()
-                playPauseButton.setImageResource(R.drawable.play_arrow)
+
+                if (audioFileIndex < 89) {
+
+                    forwardButton.performClick()
+                    forwardButton.isSoundEffectsEnabled = false
+                }else {
+                    audioFileIndex = -1
+
+                    playPauseButton.performClick()
+                    playPauseButton.isSoundEffectsEnabled = false
+                }
 
             }
+                backButton.isEnabled = audioFileIndex != 0
 
-            backButton.isEnabled = audioFileIndex != 0
-
-            forwardButton.isEnabled = audioFileIndex != 89
-
+                forwardButton.isEnabled = audioFileIndex != 89
         }
     }
-
     override fun getItemCount(): Int {
         return audioFilesList.size
     }
@@ -62,6 +74,7 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(audioFilesInfo: AudioFilesInfo) {
+
             itemView.audio_files_name_textview.text = audioFilesInfo.name
 
         }
