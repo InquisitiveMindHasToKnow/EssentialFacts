@@ -215,28 +215,29 @@ class StudyWithAudioFragment : Fragment(){
         backButton.setOnClickListener {
             forwardButton.isEnabled = true
 
-            if (mediaPlayer != null) {
-                mediaPlayer.reset()
-                seekBar.progress = 0
+            mediaPlayer.reset()
+            seekBar.progress = 0
 
-                audioFileIndex--
+            audioFileIndex--
 
-                path = audioFilesList[audioFileIndex].rawName
-                val newPathTitle = audioFilesList[audioFileIndex].name
+            path = audioFilesList[audioFileIndex].rawName
+            val newPathTitle = audioFilesList[audioFileIndex].name
 
-                mediaPlayer = MediaPlayer.create(context, path)
-                seekBar.max = mediaPlayer.duration
-                audioNameTextView.text = newPathTitle
+            mediaPlayer = MediaPlayer.create(context, path)
+            seekBar.max = mediaPlayer.duration
+            audioNameTextView.text = newPathTitle
+
+            playPauseButton.performClick()
+            playPauseButton.isSoundEffectsEnabled = false
+            // playPauseButton.setImageResource(R.drawable.play_arrow)
+
+            initializeSeekBar()
+
+            println("Current Index of List on backward" + audioFileIndex)
+
+            mediaPlayer.setOnCompletionListener {
+                mediaPlayer.pause()
                 playPauseButton.setImageResource(R.drawable.play_arrow)
-
-                initializeSeekBar()
-
-                println("Current Index of List on backward" + audioFileIndex)
-
-                mediaPlayer.setOnCompletionListener {
-                    mediaPlayer.pause()
-                    playPauseButton.setImageResource(R.drawable.play_arrow)
-                }
             }
             backButton.isEnabled = audioFileIndex != 0
         }
@@ -244,29 +245,30 @@ class StudyWithAudioFragment : Fragment(){
         forwardButton.setOnClickListener {
             backButton.isEnabled = true
 
-            if (mediaPlayer != null) {
-                mediaPlayer.reset()
-                seekBar.progress = 0
+            mediaPlayer.reset()
+            seekBar.progress = 0
 
-                audioFileIndex++
+            audioFileIndex++
 
-                path = audioFilesList[audioFileIndex].rawName
-                val newPathTitle = audioFilesList[audioFileIndex].name
+            path = audioFilesList[audioFileIndex].rawName
+            val newPathTitle = audioFilesList[audioFileIndex].name
 
-                mediaPlayer = MediaPlayer.create(context, path)
-                seekBar.max = mediaPlayer.duration
-                audioNameTextView.text = newPathTitle
+            mediaPlayer = MediaPlayer.create(context, path)
+            seekBar.max = mediaPlayer.duration
+            audioNameTextView.text = newPathTitle
+
+            playPauseButton.performClick()
+            playPauseButton.isSoundEffectsEnabled = false
+            // playPauseButton.setImageResource(R.drawable.play_arrow)
+
+            initializeSeekBar()
+            println("Current Index of List on forward" + audioFileIndex)
+            println("max index" + audioFilesList.size)
+
+
+            mediaPlayer.setOnCompletionListener {
+                mediaPlayer.pause()
                 playPauseButton.setImageResource(R.drawable.play_arrow)
-
-                initializeSeekBar()
-                println("Current Index of List on forward" + audioFileIndex)
-                println("max index" + audioFilesList.size)
-
-
-                mediaPlayer.setOnCompletionListener {
-                    mediaPlayer.pause()
-                    playPauseButton.setImageResource(R.drawable.play_arrow)
-                }
             }
             forwardButton.isEnabled = audioFileIndex != audioFilesList.size - 1
         }
