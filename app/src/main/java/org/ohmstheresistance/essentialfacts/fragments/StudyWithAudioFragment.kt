@@ -188,7 +188,7 @@ class StudyWithAudioFragment : Fragment(){
         audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         audioRecyclerView.adapter = audioFilesAdapter
 
-        backButton.isEnabled = false
+      //  backButton.isEnabled = false
     }
 
     private fun setUpMediaPlayer() {
@@ -223,13 +223,15 @@ class StudyWithAudioFragment : Fragment(){
         }
 
         backButton.setOnClickListener {
-            forwardButton.isEnabled = true
 
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             mediaPlayer.reset()
             seekBar.progress = 0
 
+            if(audioFileIndex == 0){
+                audioFileIndex = 89
+            }
             audioFileIndex--
 
             path = audioFilesList[audioFileIndex].rawName
@@ -250,17 +252,23 @@ class StudyWithAudioFragment : Fragment(){
                 audioFilesAdapter.notifyItemChanged(audioFileIndex)
                 forwardButton.performClick()
             }
-            backButton.isEnabled = audioFileIndex != 0
         }
 
         forwardButton.setOnClickListener {
-            backButton.isEnabled = true
+
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             mediaPlayer.reset()
             seekBar.progress = 0
 
+            println("Pressed at max before plus plus" + audioFileIndex)
+
+            if(audioFileIndex == 89){
+                audioFileIndex = 0
+            }
             audioFileIndex++
+
+            println("Pressed at max" + audioFileIndex)
 
             path = audioFilesList[audioFileIndex].rawName
             val newPathTitle = audioFilesList[audioFileIndex].name
@@ -269,8 +277,9 @@ class StudyWithAudioFragment : Fragment(){
             seekBar.max = mediaPlayer.duration
             audioNameTextView.text = newPathTitle
 
-            playPauseButton.performClick()
-            playPauseButton.isSoundEffectsEnabled = false
+
+            mediaPlayer.start()
+            audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             initializeSeekBar()
             audio_recycler_view.smoothScrollToPosition(audioFileIndex)
@@ -283,14 +292,14 @@ class StudyWithAudioFragment : Fragment(){
 
                     forwardButton.performClick()
                     forwardButton.isSoundEffectsEnabled = false
-                }else {
-                    audioFileIndex = 0
 
-                    playPauseButton.performClick()
-                    playPauseButton.isSoundEffectsEnabled = false
+                }else {
+
+                    audioFileIndex = 0
+                    mediaPlayer.start()
+                    audioFilesAdapter.notifyItemChanged(audioFileIndex)
                 }
             }
-            forwardButton.isEnabled = audioFileIndex != 89
         }
     }
 
