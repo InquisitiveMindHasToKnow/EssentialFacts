@@ -35,20 +35,21 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
         holder.itemView.setOnClickListener {
 
-            notifyDataSetChanged()
-
             mediaPlayer.release()
             handler.removeCallbacksAndMessages(null)
 
             audioFileIndex = position
+            notifyDataSetChanged()
+            println("MAX    " + audioFileIndex)
 
             mediaPlayer = MediaPlayer.create(holder.itemView.context, audioPosition.rawName)
             seekBar.progress = 0
             seekBar.max = mediaPlayer.duration
             audioNameTextView.text = audioPosition.name
 
-            playPauseButton.performClick()
-            playPauseButton.isSoundEffectsEnabled = false
+            mediaPlayer.start()
+            playPauseButton.setImageResource(R.drawable.pause_icon)
+            notifyItemChanged(audioFileIndex)
 
             mediaPlayer.setOnCompletionListener {
 
@@ -58,14 +59,8 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                     forwardButton.isSoundEffectsEnabled = false
                 }else {
                     audioFileIndex = 0
-
-                    playPauseButton.performClick()
-                    playPauseButton.isSoundEffectsEnabled = false
+                    mediaPlayer.start()
                 }
-
-                backButton.isEnabled = audioFileIndex != 0
-
-                forwardButton.isEnabled = audioFileIndex != 89
             }
         }
     }
@@ -78,7 +73,6 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
         fun bindItems(audioFilesInfo: AudioFilesInfo) {
 
             itemView.audio_files_name_textview.text = audioFilesInfo.name
-
         }
     }
 }
