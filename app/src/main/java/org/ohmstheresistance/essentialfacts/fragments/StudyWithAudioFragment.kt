@@ -1,5 +1,9 @@
 package org.ohmstheresistance.essentialfacts.fragments
 
+import android.content.Context
+import android.media.AudioManager
+import android.media.AudioManager.AUDIOFOCUS_LOSS_TRANSIENT
+import android.media.AudioManager.OnAudioFocusChangeListener
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
@@ -23,6 +27,7 @@ import org.ohmstheresistance.essentialfacts.recyclerview.AudioFilesAdapter
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
+
 
 lateinit var mediaPlayer: MediaPlayer
 lateinit var audioNameTextView: TextView
@@ -198,7 +203,10 @@ class StudyWithAudioFragment : Fragment(){
 
         playPauseButton.setOnClickListener {
             val isPlaying: Boolean = mediaPlayer.isPlaying
-            mediaPlayer.start()
+
+            getAudioFocus()
+
+          //  mediaPlayer.start()
 
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
@@ -241,7 +249,7 @@ class StudyWithAudioFragment : Fragment(){
 
             mediaPlayer.setOnCompletionListener {
 
-                audioFilesAdapter.notifyItemInserted(audioFileIndex)
+                audioFilesAdapter.notifyItemChanged(audioFileIndex)
                 forwardButton.performClick()
             }
             backButton.isEnabled = audioFileIndex != 0
@@ -285,6 +293,35 @@ class StudyWithAudioFragment : Fragment(){
                 }
             }
             forwardButton.isEnabled = audioFileIndex != 89
+        }
+    }
+
+    private fun getAudioFocus() {
+        val audioManager: AudioManager = context!!.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+        val audioFocusChangeListener = OnAudioFocusChangeListener { focusChange ->
+            if (focusChange == AUDIOFOCUS_LOSS_TRANSIENT) {
+                mediaPlayer.pause()
+
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                mediaPlayer.start()
+
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                mediaPlayer.pause()
+                playPauseButton.setImageResource(R.drawable.play_arrow)
+            }
+        }
+
+        val result: Int = audioManager.requestAudioFocus(audioFocusChangeListener, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN)
+
+        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            mediaPlayer.start()
+
+            mediaPlayer.setOnCompletionListener {
+
+                audioFilesAdapter.notifyItemChanged(audioFileIndex)
+                forwardButton.performClick()
+            }
         }
     }
 
