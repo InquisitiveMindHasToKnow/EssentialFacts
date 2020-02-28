@@ -61,12 +61,9 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                     playPauseButton.isSoundEffectsEnabled = false
                 }
 
-                if(audioFileIndex == 89 && forwardButton.isPressed){
-                    audioFileIndex = 0
-                }
-                if(audioFileIndex == 0 && backButton.isPressed){
-                    audioFileIndex = 89
-                }
+                backButton.isEnabled = audioFileIndex != 0
+
+                forwardButton.isEnabled = audioFileIndex != 89
             }
         }
     }

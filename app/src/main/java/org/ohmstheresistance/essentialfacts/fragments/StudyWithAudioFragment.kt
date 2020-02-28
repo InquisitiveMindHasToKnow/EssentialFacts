@@ -183,6 +183,7 @@ class StudyWithAudioFragment : Fragment(){
         audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         audioRecyclerView.adapter = audioFilesAdapter
 
+        backButton.isEnabled = false
     }
 
     private fun setUpMediaPlayer() {
@@ -223,8 +224,6 @@ class StudyWithAudioFragment : Fragment(){
             mediaPlayer.reset()
             seekBar.progress = 0
 
-            scrollToTopOrBottom()
-
             audioFileIndex--
 
             path = audioFilesList[audioFileIndex].rawName
@@ -245,6 +244,7 @@ class StudyWithAudioFragment : Fragment(){
                 audioFilesAdapter.notifyItemInserted(audioFileIndex)
                 forwardButton.performClick()
             }
+            backButton.isEnabled = audioFileIndex != 0
         }
 
         forwardButton.setOnClickListener {
@@ -253,8 +253,6 @@ class StudyWithAudioFragment : Fragment(){
 
             mediaPlayer.reset()
             seekBar.progress = 0
-
-            scrollToTopOrBottom()
 
             audioFileIndex++
 
@@ -286,14 +284,7 @@ class StudyWithAudioFragment : Fragment(){
                     playPauseButton.isSoundEffectsEnabled = false
                 }
             }
-        }
-    }
-    private fun scrollToTopOrBottom(){
-        if(audioFileIndex == 89 && forwardButton.isPressed){
-            audioFileIndex = 0
-        }
-        if(audioFileIndex == 0 && backButton.isPressed){
-            audioFileIndex = 89
+            forwardButton.isEnabled = audioFileIndex != 89
         }
     }
 
