@@ -35,6 +35,8 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
         holder.itemView.setOnClickListener {
 
+            notifyDataSetChanged()
+
             mediaPlayer.release()
             handler.removeCallbacksAndMessages(null)
 

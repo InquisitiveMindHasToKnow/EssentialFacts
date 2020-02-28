@@ -206,8 +206,6 @@ class StudyWithAudioFragment : Fragment(){
 
             getAudioFocus()
 
-          //  mediaPlayer.start()
-
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             if (isPlaying) {
