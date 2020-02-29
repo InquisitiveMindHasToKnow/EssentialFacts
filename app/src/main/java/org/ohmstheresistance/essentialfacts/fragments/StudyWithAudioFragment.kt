@@ -270,7 +270,7 @@ class StudyWithAudioFragment : Fragment(){
 
                     audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
-                    if (audioFileIndex < audioFilesList.size - 1) {
+                    if (audioFileIndex <= audioFilesList.size - 1) {
 
                             forwardButton.performClick()
 

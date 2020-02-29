@@ -52,7 +52,7 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
             mediaPlayer.setOnCompletionListener {
 
-                if (audioFileIndex < audioFilesList.size - 1) {
+                if (audioFileIndex <= audioFilesList.size - 1) {
 
                     forwardButton.performClick()
 
