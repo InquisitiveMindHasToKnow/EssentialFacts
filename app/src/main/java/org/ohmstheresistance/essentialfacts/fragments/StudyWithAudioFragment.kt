@@ -187,8 +187,6 @@ class StudyWithAudioFragment : Fragment(){
         audioFilesAdapter = AudioFilesAdapter(audioFilesList)
         audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         audioRecyclerView.adapter = audioFilesAdapter
-
-      //  backButton.isEnabled = false
     }
 
     private fun setUpMediaPlayer() {
@@ -230,7 +228,7 @@ class StudyWithAudioFragment : Fragment(){
             seekBar.progress = 0
 
             if(audioFileIndex == 0){
-                audioFileIndex = 89
+                audioFileIndex = audioFilesList.size - 1
             }
             audioFileIndex--
 
@@ -263,7 +261,7 @@ class StudyWithAudioFragment : Fragment(){
 
             println("Pressed at max before plus plus" + audioFileIndex)
 
-            if(audioFileIndex == 89){
+            if(audioFileIndex == audioFilesList.size - 1){
                 audioFileIndex = 0
             }
             audioFileIndex++
@@ -278,7 +276,7 @@ class StudyWithAudioFragment : Fragment(){
             audioNameTextView.text = newPathTitle
 
 
-            mediaPlayer.start()
+            playPauseButton.performClick()
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
             initializeSeekBar()
@@ -288,7 +286,7 @@ class StudyWithAudioFragment : Fragment(){
 
              audioFilesAdapter.notifyItemChanged(audioFileIndex)
 
-                if (audioFileIndex < 89) {
+                if (audioFileIndex < audioFilesList.size - 1) {
 
                     forwardButton.performClick()
                     forwardButton.isSoundEffectsEnabled = false

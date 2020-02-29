@@ -47,13 +47,13 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
             seekBar.max = mediaPlayer.duration
             audioNameTextView.text = audioPosition.name
 
-            mediaPlayer.start()
-            playPauseButton.setImageResource(R.drawable.pause_icon)
+            playPauseButton.performClick()
+
             notifyItemChanged(audioFileIndex)
 
             mediaPlayer.setOnCompletionListener {
 
-                if (audioFileIndex < 89) {
+                if (audioFileIndex < audioFilesList.size - 1) {
 
                     forwardButton.performClick()
                     forwardButton.isSoundEffectsEnabled = false
