@@ -227,31 +227,23 @@ class StudyWithAudioFragment : Fragment(){
             mediaPlayer.reset()
             seekBar.progress = 0
 
-            if(audioFileIndex == 0){
+            if (audioFileIndex == 0) {
                 audioFileIndex = audioFilesList.size - 1
-            }
-            audioFileIndex--
 
-            path = audioFilesList[audioFileIndex].rawName
-            val newPathTitle = audioFilesList[audioFileIndex].name
+               setIndividualAudioInformation()
 
-            mediaPlayer = MediaPlayer.create(context, path)
-            seekBar.max = mediaPlayer.duration
-            audioNameTextView.text = newPathTitle
+            } else {
+                audioFileIndex--
 
-            playPauseButton.performClick()
-            playPauseButton.isSoundEffectsEnabled = false
+               setIndividualAudioInformation()
 
-            initializeSeekBar()
-            audio_recycler_view.smoothScrollToPosition(audioFileIndex)
+                mediaPlayer.setOnCompletionListener {
 
-            mediaPlayer.setOnCompletionListener {
-
-                audioFilesAdapter.notifyItemChanged(audioFileIndex)
-                forwardButton.performClick()
+                    audioFilesAdapter.notifyItemChanged(audioFileIndex)
+                    forwardButton.performClick()
+                }
             }
         }
-
         forwardButton.setOnClickListener {
 
             audioFilesAdapter.notifyItemChanged(audioFileIndex)
@@ -261,44 +253,50 @@ class StudyWithAudioFragment : Fragment(){
 
             println("Pressed at max before plus plus" + audioFileIndex)
 
-            if(audioFileIndex == audioFilesList.size - 1){
+            if (audioFileIndex == audioFilesList.size - 1) {
                 audioFileIndex = 0
-            }
-            audioFileIndex++
 
-            println("Pressed at max" + audioFileIndex)
+                setIndividualAudioInformation()
 
-            path = audioFilesList[audioFileIndex].rawName
-            val newPathTitle = audioFilesList[audioFileIndex].name
+            } else {
+                audioFileIndex++
 
-            mediaPlayer = MediaPlayer.create(context, path)
-            seekBar.max = mediaPlayer.duration
-            audioNameTextView.text = newPathTitle
+                println("Pressed at max" + audioFileIndex)
+                setIndividualAudioInformation()
 
+                mediaPlayer.setOnCompletionListener {
 
-            playPauseButton.performClick()
-            audioFilesAdapter.notifyItemChanged(audioFileIndex)
-
-            initializeSeekBar()
-            audio_recycler_view.smoothScrollToPosition(audioFileIndex)
-
-            mediaPlayer.setOnCompletionListener {
-
-             audioFilesAdapter.notifyItemChanged(audioFileIndex)
-
-                if (audioFileIndex < audioFilesList.size - 1) {
-
-                    forwardButton.performClick()
-                    forwardButton.isSoundEffectsEnabled = false
-
-                }else {
-
-                    audioFileIndex = 0
-                    mediaPlayer.start()
                     audioFilesAdapter.notifyItemChanged(audioFileIndex)
+
+                    if (audioFileIndex < audioFilesList.size - 1) {
+
+                        forwardButton.performClick()
+                        forwardButton.isSoundEffectsEnabled = false
+
+                    } else {
+
+                        audioFileIndex = 0
+                        mediaPlayer.start()
+                     //   audioFilesAdapter.notifyItemChanged(audioFileIndex)
+                    }
                 }
             }
         }
+    }
+
+    private fun setIndividualAudioInformation(){
+        path = audioFilesList[audioFileIndex].rawName
+        val newPathTitle = audioFilesList[audioFileIndex].name
+
+        mediaPlayer = MediaPlayer.create(context, path)
+        seekBar.max = mediaPlayer.duration
+        audioNameTextView.text = newPathTitle
+
+        playPauseButton.performClick()
+        playPauseButton.isSoundEffectsEnabled = false
+
+        initializeSeekBar()
+        audio_recycler_view.smoothScrollToPosition(audioFileIndex)
     }
 
     private fun getAudioFocus() {
