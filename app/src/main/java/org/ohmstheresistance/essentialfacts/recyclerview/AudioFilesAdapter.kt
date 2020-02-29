@@ -59,7 +59,8 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                     forwardButton.isSoundEffectsEnabled = false
                 }else {
                     audioFileIndex = 0
-                    mediaPlayer.start()
+
+                    playPauseButton.performClick()
                 }
             }
         }
