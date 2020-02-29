@@ -40,7 +40,6 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
 
             audioFileIndex = position
             notifyDataSetChanged()
-            println("MAX    " + audioFileIndex)
 
             mediaPlayer = MediaPlayer.create(holder.itemView.context, audioPosition.rawName)
             seekBar.progress = 0
@@ -56,7 +55,7 @@ class AudioFilesAdapter(private val audioFilesList: ArrayList<AudioFilesInfo>) :
                 if (audioFileIndex < audioFilesList.size - 1) {
 
                     forwardButton.performClick()
-                    forwardButton.isSoundEffectsEnabled = false
+
                 }else {
                     audioFileIndex = 0
 
