@@ -272,14 +272,12 @@ class StudyWithAudioFragment : Fragment(){
 
                     if (audioFileIndex < audioFilesList.size - 1) {
 
-                        forwardButton.performClick()
-                        forwardButton.isSoundEffectsEnabled = false
+                            forwardButton.performClick()
 
                     } else {
 
                         audioFileIndex = 0
-                        mediaPlayer.start()
-                     //   audioFilesAdapter.notifyItemChanged(audioFileIndex)
+                        playPauseButton.performClick()
                     }
                 }
             }
@@ -295,7 +293,6 @@ class StudyWithAudioFragment : Fragment(){
         audioNameTextView.text = newPathTitle
 
         playPauseButton.performClick()
-        playPauseButton.isSoundEffectsEnabled = false
 
         initializeSeekBar()
         audio_recycler_view.smoothScrollToPosition(audioFileIndex)
