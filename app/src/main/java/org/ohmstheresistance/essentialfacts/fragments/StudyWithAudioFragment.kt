@@ -187,6 +187,8 @@ class StudyWithAudioFragment : Fragment(){
         audioFilesAdapter = AudioFilesAdapter(audioFilesList)
         audioRecyclerView.layoutManager =LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         audioRecyclerView.adapter = audioFilesAdapter
+
+        audioRecyclerView.itemAnimator = null
     }
 
     private fun setUpMediaPlayer() {
