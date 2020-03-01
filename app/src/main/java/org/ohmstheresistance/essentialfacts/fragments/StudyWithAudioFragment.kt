@@ -172,6 +172,7 @@ class StudyWithAudioFragment : Fragment(){
         audioFilesList.add(AudioFilesInfo("Who wrote the Declaration of Independence?", R.raw.who_wrote_declaration_of_independence))
         audioFilesList.add(AudioFilesInfo("Why colonists fought the British", R.raw.why_colonists_fought_british))
         audioFilesList.add(AudioFilesInfo("WWII enemies", R.raw.ww2_enemies))
+        audioFilesList.add(AudioFilesInfo("The Star Spangled Banner", R.raw.starspangledbanner))
 
         audioFilesList.shuffle()
 
