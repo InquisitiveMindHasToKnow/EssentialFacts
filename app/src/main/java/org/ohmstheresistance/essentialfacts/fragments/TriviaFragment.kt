@@ -153,7 +153,7 @@ class TriviaFragment : Fragment() {
             answers = listOf("the President", "the top military general", "the Congress", "Secretary of Defense")
         ),
         EssentialFactsTrivia(
-            question = "What are two cabinat level positions?",
+            question = "What are two cabinet level positions?",
             answers = listOf("Secretary of State/ Secretary of Defense", "Secretary of Education/Secretary of the FBI", "Secretary of the CIA/Secretary of Agriculture", "Secretary of the Treasury/Secretary of Airports")
         ),
         EssentialFactsTrivia(
@@ -218,10 +218,10 @@ class TriviaFragment : Fragment() {
         ),
         EssentialFactsTrivia(
             question = "Who wrote the Declaration of Independence?",
-            answers = listOf("Thomas Jeffereson", "James Madison", "Benjamin Franklin", "John Jay")
+            answers = listOf("Thomas Jefferson", "James Madison", "Benjamin Franklin", "John Jay")
         ),
         EssentialFactsTrivia(
-            question = "When was the Declaration of Independence adpoted?",
+            question = "When was the Declaration of Independence adopted?",
             answers = listOf("July 4, 1776", "July 4, 1900", "July 4, 1796", "July 4, 1812")
         ),
         EssentialFactsTrivia(
@@ -329,7 +329,7 @@ class TriviaFragment : Fragment() {
             answers = listOf("Because there is a star for each state ", "Because there are 50 rivers in the country", "Because 50 is a magic number", "Because the 50 stars complement the 13 stripes perfectly")
         ),
         EssentialFactsTrivia(
-            question = "What is the name oof the national anthem?",
+            question = "What is the name of the national anthem?",
             answers = listOf("The Star-Spangled Banner", "Oh Say Can You See", "America, The Beautiful", "Lift Every Voice")
         ),
         EssentialFactsTrivia(
